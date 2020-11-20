@@ -10,7 +10,7 @@ import Contact from "./contact";
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <Navbar />
       <Switch>
         <Route path="/results" component={Results} />
