@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import TutorialCard from "./common/tutorialCard";
 import "./css/home.css";
-import "./css/cards.css";
 import carousel from "./dodge2.jpg";
 import frontIcon from "./front.png";
 import uploadIcon from "./uploadphoto.png";
@@ -30,6 +29,11 @@ class Home extends Component {
       },
     ],
   };
+
+  handleClick = () => {
+    this.props.history.push("./user");
+  };
+
   render() {
     return (
       <React.Fragment>
@@ -86,7 +90,9 @@ class Home extends Component {
               paddingBottom: "40px",
             }}
           >
-            <button className="btn btn-success">Get started</button>
+            <button onClick={this.handleClick} className="btn btn-success">
+              Get started
+            </button>
           </div>
         </div>
 
