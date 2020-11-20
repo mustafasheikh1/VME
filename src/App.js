@@ -5,15 +5,7 @@ import UserData from "./userData";
 import Home from "./home";
 import Navbar from "./navbar";
 import NotFound from "./notFound";
-<<<<<<< HEAD
 
-function App() {
-  return (
-    <div className="App">
-      <Navbar />
-      <Switch>
-        <Route path="/results" component={Results} />
-=======
 import AboutUs from "./aboutUs";
 import Contact from "./contact";
 
@@ -25,7 +17,6 @@ function App() {
         <Route path="/results" component={Results} />
         <Route path="/about" component={AboutUs} />
         <Route path="/contact" component={Contact} />
->>>>>>> mine
         <Route path="/user" component={UserData} />
         <Route path="/not-found" component={NotFound} />
         <Redirect from="/home" to="/" />
