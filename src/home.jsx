@@ -13,7 +13,7 @@ class Home extends Component {
         _id: 1,
         Image: frontIcon,
         Label: "Taking the Photo",
-        Detail: "Click the image of the car of the front",
+        Detail: "Click the image of the car from the front",
       },
       {
         _id: 2,
