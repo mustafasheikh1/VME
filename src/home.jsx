@@ -98,10 +98,13 @@ class Home extends Component {
 
         <div
           className="card mb-3"
-          style={{ paddingTop: "20px", backgroundColor: "gray" }}
+          style={{ paddingTop: "20px", backgroundColor: "rgb(52,58,64)" }}
         >
           <div className="card-body">
-            <h5 className="card-title" style={{ paddingLeft: "550px" }}>
+            <h5
+              className="card-title"
+              style={{ paddingLeft: "550px", color: "white" }}
+            >
               All copyrights reserved.
             </h5>
           </div>

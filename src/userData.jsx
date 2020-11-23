@@ -50,7 +50,7 @@ class UserData extends Component {
             <input onChange={this.handleChange} type="file" alt="" />
           </div>
           <div className="col-sm-2">
-            <button onClick={this.handleSubmit} className="btn btn-primary">
+            <button onClick={this.handleSubmit} className="btn btn-dark">
               Upload
             </button>
           </div>
