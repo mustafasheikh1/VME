@@ -13,8 +13,10 @@ const TutorialCard = ({ Image, Label, Detail }) => {
         }}
       />
       <div className="card-body" style={{ width: "15rem" }}>
-        <h5 className="card-title">{Label}</h5>
-        <p className="card-text " style={{ alignContent: "center" }}>
+        <h5 style={{ paddingLeft: "20px" }} className="card-title">
+          {Label}
+        </h5>
+        <p className="card-text " style={{ paddingLeft: "20px" }}>
           {Detail}
         </p>
       </div>

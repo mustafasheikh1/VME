@@ -12,19 +12,19 @@ class Home extends Component {
       {
         _id: 1,
         Image: frontIcon,
-        Label: "Taking the Photo",
-        Detail: "Click the image of the car of the front",
+        Label: "Take the Photo",
+        Detail: "Click the image of the car from the front",
       },
       {
         _id: 2,
         Image: uploadIcon,
-        Label: "Uploading the Photo",
+        Label: "Upload the Photo",
         Detail: "Click the image of the car from the front",
       },
       {
         _id: 3,
         Image: resultIcon,
-        Label: "Getting the Results",
+        Label: "Get the Results",
         Detail: "You can check the auto generated Results",
       },
     ],
@@ -62,7 +62,9 @@ class Home extends Component {
 
         <div className="row justify-content-center">
           <div className="col-md-auto">
-            <h1 style={{ paddingTop: "20px" }}>Tutorial...</h1>
+            <h1 style={{ paddingTop: "20px" }}>
+              <strong>Tutorial...</strong>
+            </h1>
           </div>
         </div>
         <div className="row">
@@ -98,10 +100,13 @@ class Home extends Component {
 
         <div
           className="card mb-3"
-          style={{ paddingTop: "20px", backgroundColor: "gray" }}
+          style={{ paddingTop: "20px", backgroundColor: "rgb(52,58,64)" }}
         >
           <div className="card-body">
-            <h5 className="card-title" style={{ paddingLeft: "550px" }}>
+            <h5
+              className="card-title"
+              style={{ paddingLeft: "550px", color: "white" }}
+            >
               All copyrights reserved.
             </h5>
           </div>
