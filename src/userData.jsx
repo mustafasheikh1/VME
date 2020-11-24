@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import image from "./imageicon.png";
+
 class UserData extends Component {
   state = {
     imageIcon: image,
@@ -21,9 +22,9 @@ class UserData extends Component {
     return (
       <React.Fragment>
         <div className="row">
-          <div className="col-sm-5">
-            <h2 style={{ paddingTop: "20px", paddingLeft: "10px" }}>
-              Please upload your picture.
+          <div className="col-sm-12">
+            <h2 style={{ paddingTop: "20px", paddingLeft: "30px" }}>
+              <strong>Please upload your picture.</strong>
             </h2>
           </div>
         </div>
@@ -35,10 +36,10 @@ class UserData extends Component {
                 className="rounded"
                 alt=""
                 style={{
-                  maxHeight: "200px",
-                  maxWidth: "200px",
-                  minHeight: "200px",
-                  minWidth: "200px",
+                  maxHeight: "150px",
+                  maxWidth: "150px",
+                  minHeight: "150px",
+                  minWidth: "150px",
                 }}
               />
             </div>

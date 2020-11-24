@@ -6,7 +6,7 @@ const AboutUs = () => {
       <div className="row">
         <div className="col-sm-3 offset-sm-5">
           <h1 style={{ paddingTop: "20px" }}>
-            <u>About Us</u>{" "}
+            <strong>About Us</strong>
           </h1>
         </div>
       </div>

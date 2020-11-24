@@ -1,0 +1,25 @@
+.contactDiv {
+  height: 550px;
+  margin: 10px 40px 60px 40px;
+  border-radius: 5px;
+  background-color: white;
+  padding: 30px;
+}
+
+.inputfields {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.contactDiv input,
+.contactDiv textarea {
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 10px;
+
+  padding-left: 10px;
+}
+
+.body {
+  background-color: black;
+}
