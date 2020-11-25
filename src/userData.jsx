@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import image from "./imageicon.png";
-import ReactDOM from "react-dom";
+
 class UserData extends Component {
   state = {
     imageIcon: image,
+    error: "",
   };
 
   handleChange = (e) => {
@@ -14,10 +15,15 @@ class UserData extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     if (this.state.imageIcon === image) {
-      this.handleError();
+      const error = (
+        <p style={{ color: "red" }}>
+          <b>Note: </b>Please choose an image first.
+        </p>
+      );
+      this.setState({ error });
       return;
     }
-    this.props.history.push("./results");
+    this.props.history.push("./formResults");
   };
 
   render() {
@@ -65,23 +71,19 @@ class UserData extends Component {
               type="file"
               alt=""
             />
-            <button onClick={this.handleSubmit} className="btn btn-dark">
+            <button onClick={this.handleSubmit} className="btn btn-dark btn-sm">
               Upload
             </button>
           </div>
         </div>
-        <div id="warning" style={{ paddingLeft: "630px" }}></div>
+        {this.state.error && (
+          <div id="warning" style={{ paddingLeft: "630px" }}>
+            {this.state.error}
+          </div>
+        )}
       </React.Fragment>
     );
   }
-  handleError = () => {
-    const element = (
-      <p>
-        <b>Note: </b>Please choose an image first
-      </p>
-    );
-    ReactDOM.render(element, document.getElementById("warning"));
-  };
 }
 
 export default UserData;
