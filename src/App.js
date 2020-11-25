@@ -8,6 +8,7 @@ import NotFound from "./notFound";
 import AboutUs from "./aboutUs";
 import Contact from "./contact";
 import ResultForm from './resultForm';
+import PriceData from './priceData';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Switch>
         <Route path="/results" component={Results} />
         <Route path="/formResults" component={ResultForm}/>
+        <Route path="/priceData" component={PriceData}/>
         <Route path="/about" component={AboutUs} />
         <Route path="/contact" component={Contact} />
         <Route path="/user" component={UserData} />

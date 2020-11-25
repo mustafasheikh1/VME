@@ -52,7 +52,7 @@ class ResultForm extends Component {
     const errors = this.validate();
     this.setState({ errors: errors || {} });
     if (errors) return;
-    console.log("submitted");
+    this.props.history.push("./priceData");
   };
 
   render() {
