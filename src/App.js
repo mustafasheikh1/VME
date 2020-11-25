@@ -7,6 +7,7 @@ import Navbar from "./navbar";
 import NotFound from "./notFound";
 import AboutUs from "./aboutUs";
 import Contact from "./contact";
+import ResultForm from './resultForm';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Navbar />
       <Switch>
         <Route path="/results" component={Results} />
+        <Route path="/formResults" component={ResultForm}/>
         <Route path="/about" component={AboutUs} />
         <Route path="/contact" component={Contact} />
         <Route path="/user" component={UserData} />
