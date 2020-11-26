@@ -72,7 +72,7 @@ class ResultForm extends Component {
           <b>Note: </b>
           Please confirm whether these results are correct or not.
         </p>
-        <div className="results" style={{ paddingLeft: "300px" }}>
+        <div className="results" style={{ paddingLeft: "200px" }}>
           <form onSubmit={this.handleSubmit}>
             <div className="row">
               <div className="col-sm-6" style={{ borderRight: "solid" }}>
