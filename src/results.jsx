@@ -1,8 +1,16 @@
 import React, { Component } from "react";
-import clipboard from "./clipboard.png";
+import makeIcon from "./makeIcon2.png";
+import modelIcon from "./modelIcon2.png";
+import registrationCityIcon from "./registrationCityIcon.png";
+import fuelIcon from "./fuelIcon.png";
+import mileageIcon from "./mileageIcon2.png";
+import engineIcon from "./engineIcon.jpg";
+import transmissionIcon from "./transmissionIcon.png";
+import priceIcon from "./priceIcon.png";
+import licencePlateIcon from "./licenceplateIcon.png";
+import yearIcon from "./yearIcon2.png";
 class Results extends Component {
   state = {
-    resultIcon: clipboard,
     car: {},
   };
   componentDidMount() {
@@ -14,8 +22,9 @@ class Results extends Component {
       mileage: "200,000 km",
       engine: "1600 cc",
       tranmission: "Manual",
-      price: "2200000 Rs",
-      licencePlate: "LZX 9171",
+      price: "2200000/- Rs",
+      licencePlate: "LZX-9171",
+      year: "2015",
     };
     this.setState({ car });
   }
@@ -23,6 +32,7 @@ class Results extends Component {
     const {
       make,
       model,
+      year,
       registrationCity,
       fuel,
       mileage,
@@ -33,76 +43,144 @@ class Results extends Component {
     } = this.state.car;
     return (
       <React.Fragment>
-        <div className="container">
-          <div className="row">
-            <div
-              id="carouselExampleCaptions"
-              className="carousel slide"
-              data-ride="carousel"
-            >
-              <div
-                className="carousel-inner"
-                style={{
-                  width: "600px",
-                  marginLeft: "250px",
-                }}
-              >
-                <div className="carousel-item active">
-                  <img
-                    src={this.state.resultIcon}
-                    className="d-block w-100"
-                    alt="..."
-                    style={{ height: "500px" }}
-                  />
-                  <div className="carousel-caption d-none d-md-block">
-                    <h5 style={{ color: "black", paddingBottom: "30px" }}>
-                      Results...
-                    </h5>
-                    <ul
-                      style={{
-                        color: "black",
-                        listStyleType: "none",
-                        paddingBottom: "50px",
-                      }}
-                    >
-                      <li>
-                        <b>Make:</b> {make}
-                      </li>
-                      <li>
-                        <b>Engine:</b> {engine}
-                      </li>
-                      <li>
-                        <b>Model:</b> {model}
-                      </li>
-                      <li>
-                        <b>Fuel:</b> {fuel}
-                      </li>
-                      <li>
-                        <b>Mileage:</b> {mileage}
-                      </li>
-                      <li>
-                        <b>Transmission</b>: {tranmission}
-                      </li>
-                      <li>
-                        <b>Est Price:</b> {price}
-                      </li>
-                      <li>
-                        <b>Registration City</b>: {registrationCity}
-                      </li>
-                      <li>
-                        <b>Lisence Plate</b>: {licencePlate}
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              className="col"
-              style={{
-                paddingTop: "30px",
-              }}
-            ></div>
+        <h1 style={{ paddingLeft: "90px" }}>
+          <strong>Results</strong>
+        </h1>
+        <div className="row">
+          <div
+            className="col-sm-1"
+            style={{ paddingLeft: "100px", paddingTop: "30px" }}
+          >
+            <img style={{ width: "120px" }} src={makeIcon} alt="" />
+            <h4 style={{ marginLeft: "30px" }}>Brand</h4>
+          </div>
+          <div className="col-sm-1" style={{ paddingLeft: "130px" }}>
+            <h4 style={{ paddingTop: "65px" }}>
+              <strong>{make}</strong>
+            </h4>
+          </div>
+          <div
+            className="col-sm-1"
+            style={{ paddingLeft: "275px", paddingTop: "10px" }}
+          >
+            <img style={{ width: "150px" }} src={modelIcon} alt="" />
+            <h4 style={{ marginLeft: "45px" }}>Model</h4>
+          </div>
+          <div className="col-sm-1" style={{ paddingLeft: "150px" }}>
+            <h4 style={{ paddingTop: "65px" }}>
+              <strong>{model}</strong>
+            </h4>
+          </div>
+          <div
+            className="col-sm-1"
+            style={{ paddingLeft: "250px", paddingTop: "10px" }}
+          >
+            <img style={{ width: "150px" }} src={yearIcon} alt="" />
+            <h4 style={{ marginLeft: "45px" }}>Year</h4>
+          </div>
+          <div className="col-sm-1" style={{ paddingLeft: "150px" }}>
+            <h4 style={{ paddingTop: "65px" }}>
+              <strong>{year}</strong>
+            </h4>
+          </div>
+        </div>
+
+        <div className="row" style={{ paddingTop: "40px" }}>
+          <div
+            className="col-sm-1"
+            style={{ paddingLeft: "80px", paddingTop: "10px" }}
+          >
+            <img style={{ width: "150px" }} src={fuelIcon} alt="" />
+            <h4 style={{ marginLeft: "55px" }}>Fuel</h4>
+          </div>
+          <div className="col-sm-1" style={{ paddingLeft: "130px" }}>
+            <h4 style={{ paddingTop: "65px" }}>
+              <strong>{fuel}</strong>
+            </h4>
+          </div>
+          <div
+            className="col-sm-1"
+            style={{ paddingLeft: "275px", paddingTop: "10px" }}
+          >
+            <img style={{ width: "150px" }} src={mileageIcon} alt="" />
+            <h4 style={{ marginLeft: "45px" }}>Mileage</h4>
+          </div>
+          <div className="col-sm-3" style={{ paddingLeft: "150px" }}>
+            <h4 style={{ paddingTop: "65px" }}>
+              <strong>{mileage}</strong>
+            </h4>
+          </div>
+          <div
+            className="col-sm-1"
+            style={{
+              paddingLeft: "80px",
+              paddingTop: "10px",
+            }}
+          >
+            <img style={{ width: "150px" }} src={engineIcon} alt="" />
+            <h4 style={{ marginLeft: "45px" }}>Engine</h4>
+          </div>
+          <div className="col-sm-3" style={{ paddingLeft: "110px" }}>
+            <h4 style={{ paddingTop: "65px" }}>
+              <strong>{engine}</strong>
+            </h4>
+          </div>
+        </div>
+
+        <div className="row" style={{ paddingTop: "40px" }}>
+          <div
+            className="col-sm-1"
+            style={{ paddingLeft: "100px", paddingTop: "10px" }}
+          >
+            <img style={{ width: "120px" }} src={registrationCityIcon} alt="" />
+            <h4 style={{ marginLeft: "15px" }}>Registration City</h4>
+          </div>
+          <div className="col-sm-1" style={{ paddingLeft: "135px" }}>
+            <h4 style={{ paddingTop: "65px" }}>
+              <strong>{registrationCity}</strong>
+            </h4>
+          </div>
+          <div
+            className="col-sm-1"
+            style={{ paddingLeft: "290px", paddingTop: "10px" }}
+          >
+            <img style={{ width: "100px" }} src={transmissionIcon} alt="" />
+            <h4>Transmission</h4>
+          </div>
+          <div className="col-sm-3" style={{ paddingLeft: "130px" }}>
+            <h4 style={{ paddingTop: "65px" }}>
+              <strong>{tranmission}</strong>
+            </h4>
+          </div>
+          <div
+            className="col-sm-1"
+            style={{ paddingLeft: "80px", paddingTop: "10px" }}
+          >
+            <img style={{ width: "150px" }} src={licencePlateIcon} alt="" />
+            <h4 style={{ marginLeft: "45px" }}>Licence Plate</h4>
+          </div>
+          <div className="col-sm-3" style={{ paddingLeft: "130px" }}>
+            <h4 style={{ paddingTop: "65px" }}>
+              <strong>{licencePlate}</strong>
+            </h4>
+          </div>
+        </div>
+        <div className="row">
+          <div
+            className="col-sm-1 offset-sm-4"
+            style={{
+              paddingLeft: "100px",
+              paddingTop: "20px",
+              paddingBottom: "70px",
+            }}
+          >
+            <img style={{ width: "100px" }} src={priceIcon} alt="" />
+            <h4 style={{ marginLeft: "45px" }}>Price</h4>
+          </div>
+          <div className="col-sm-3" style={{ paddingLeft: "120px" }}>
+            <h4 style={{ paddingTop: "65px" }}>
+              <strong>{price}</strong>
+            </h4>
           </div>
         </div>
       </React.Fragment>
