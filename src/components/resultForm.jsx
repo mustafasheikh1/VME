@@ -1,6 +1,5 @@
 import React from "react";
 import Joi from "joi-browser";
-import Input from "./common/input";
 import Form from "./common/form";
 import image from "../images/sideimage2.png";
 
@@ -34,7 +33,7 @@ class ResultForm extends Form {
   };
 
   render() {
-    const { data, sideIcon, errors } = this.state;
+    const { sideIcon } = this.state;
 
     return (
       <React.Fragment>
@@ -49,38 +48,11 @@ class ResultForm extends Form {
           <form onSubmit={this.handleSubmit}>
             <div className="row">
               <div className="col-sm-6" style={{ borderRight: "solid" }}>
-                <Input
-                  name="make"
-                  onChange={this.handleChange}
-                  value={data.make}
-                  id="make"
-                  label="Make"
-                  error={errors.make}
-                />
-                <Input
-                  name="model"
-                  onChange={this.handleChange}
-                  value={data.model}
-                  id="model"
-                  label="Model"
-                  error={errors.model}
-                />
-                <Input
-                  name="color"
-                  onChange={this.handleChange}
-                  value={data.color}
-                  id="color"
-                  label="Color"
-                  error={errors.color}
-                />
-                <Input
-                  name="licencePlate"
-                  onChange={this.handleChange}
-                  value={data.licencePlate}
-                  id="licencePlate"
-                  label="LicensePlate"
-                  error={errors.licencePlate}
-                />
+                {this.renderInput("make", "Make")}
+                {this.renderInput("model", "Model")}
+                {this.renderInput("color", "Color")}
+                {this.renderInput("licencePlate", "Licence Plate")}
+
                 <div className="row">
                   <div className="col-sm-2" style={{ paddingTop: "10px" }}>
                     {this.renderButton("Confirm")}
