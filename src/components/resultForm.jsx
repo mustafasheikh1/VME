@@ -40,15 +40,7 @@ class ResultForm extends Form {
   };
 
   render() {
-    const {
-      make,
-      model,
-      year,
-      fuel,
-      engine,
-      transmission,
-      licencePlate,
-    } = this.state.data;
+    const { data, sideIcon, errors } = this.state;
 
     return (
       <React.Fragment>
@@ -63,10 +55,10 @@ class ResultForm extends Form {
                 <Input
                   name="make"
                   onChange={this.handleChange}
-                  value={make}
+                  value={data.make}
                   id="make"
                   label="Make"
-                  errors={this.state.errors}
+                  error={errors.make}
                 />
                 <div className="form-group ">
                   <label htmlFor="model">
@@ -75,15 +67,13 @@ class ResultForm extends Form {
                   <input
                     name="model"
                     onChange={this.handleChange}
-                    value={model}
+                    value={data.model}
                     id="model"
                     type="text"
                     className="form-control "
                   />
-                  {this.state.errors.model && (
-                    <div className="alert alert-danger">
-                      {this.state.errors.model}
-                    </div>
+                  {errors.model && (
+                    <div className="alert alert-danger">{errors.model}</div>
                   )}
                 </div>
                 <div className="form-group ">
@@ -93,15 +83,13 @@ class ResultForm extends Form {
                   <input
                     name="year"
                     onChange={this.handleChange}
-                    value={year}
+                    value={data.year}
                     id="year"
                     type="text"
                     className="form-control "
                   />
-                  {this.state.errors.year && (
-                    <div className="alert alert-danger">
-                      {this.state.errors.year}
-                    </div>
+                  {errors.year && (
+                    <div className="alert alert-danger">{errors.year}</div>
                   )}
                 </div>
                 <div className="form-group ">
@@ -111,15 +99,13 @@ class ResultForm extends Form {
                   <input
                     name="engine"
                     onChange={this.handleChange}
-                    value={engine}
+                    value={data.engine}
                     id="engine"
                     type="text"
                     className="form-control "
                   />
-                  {this.state.errors.engine && (
-                    <div className="alert alert-danger">
-                      {this.state.errors.engine}
-                    </div>
+                  {errors.engine && (
+                    <div className="alert alert-danger">{errors.engine}</div>
                   )}
                 </div>
                 <div className="form-group ">
@@ -129,15 +115,13 @@ class ResultForm extends Form {
                   <input
                     name="fuel"
                     onChange={this.handleChange}
-                    value={fuel}
+                    value={data.fuel}
                     id="fuel"
                     type="text"
                     className="form-control "
                   />
-                  {this.state.errors.fuel && (
-                    <div className="alert alert-danger">
-                      {this.state.errors.fuel}
-                    </div>
+                  {errors.fuel && (
+                    <div className="alert alert-danger">{errors.fuel}</div>
                   )}
                 </div>
                 <div className="form-group">
@@ -147,14 +131,14 @@ class ResultForm extends Form {
                   <input
                     name="transmission"
                     onChange={this.handleChange}
-                    value={transmission}
+                    value={data.transmission}
                     id="transmission"
                     type="text"
                     className="form-control "
                   />
-                  {this.state.errors.transmission && (
+                  {errors.transmission && (
                     <div className="alert alert-danger">
-                      {this.state.errors.transmission}
+                      {errors.transmission}
                     </div>
                   )}
                 </div>
@@ -165,14 +149,14 @@ class ResultForm extends Form {
                   <input
                     name="licencePlate"
                     onChange={this.handleChange}
-                    value={licencePlate}
+                    value={data.licencePlate}
                     id="licencePlate"
                     type="text"
                     className="form-control "
                   />
-                  {this.state.errors.licencePlate && (
+                  {errors.licencePlate && (
                     <div className="alert alert-danger">
-                      {this.state.errors.licencePlate}
+                      {errors.licencePlate}
                     </div>
                   )}
                 </div>
@@ -184,7 +168,7 @@ class ResultForm extends Form {
                     paddingTop: "150px",
                     paddingLeft: "50px",
                   }}
-                  src={this.state.sideIcon}
+                  src={sideIcon}
                   alt=""
                 />
                 <h4 style={{ paddingLeft: "135px" }}>

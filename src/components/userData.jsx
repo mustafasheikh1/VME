@@ -9,7 +9,6 @@ class UserData extends Component {
 
   handleChange = (e) => {
     this.setState({ imageIcon: URL.createObjectURL(e.target.files[0]) });
-    console.log(e.currentTarget.files[0]);
   };
 
   handleSubmit = (e) => {
