@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import Joi from "joi-browser";
 import Input from "./common/input";
+<<<<<<< HEAD
 import Form from "./common/form";
+=======
+>>>>>>> main
 import image from "../images/sideimage2.png";
 
 class ResultForm extends Form {
@@ -84,7 +87,6 @@ class ResultForm extends Form {
                   onChange={this.handleChange}
                   value={make}
                   id="make"
-                  type="text"
                   label="Make"
                   errors={this.state.errors}
                 />
