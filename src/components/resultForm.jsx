@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import Joi from "joi-browser";
+import Input from "./common/input";
+import Form from "./common/form";
 import image from "../images/sideimage2.png";
 
-class ResultForm extends Component {
+class ResultForm extends Form {
   state = {
     car: {},
     sideIcon: image,
@@ -77,24 +79,15 @@ class ResultForm extends Component {
           <form onSubmit={this.handleSubmit}>
             <div className="row">
               <div className="col-sm-6" style={{ borderRight: "solid" }}>
-                <div className="form-group ">
-                  <label htmlFor="make">
-                    <b>Make</b>
-                  </label>
-                  <input
-                    name="make"
-                    onChange={this.handleChange}
-                    value={make}
-                    id="make"
-                    type="text"
-                    className="form-control "
-                  />
-                  {this.state.errors.make && (
-                    <div className="alert alert-danger">
-                      {this.state.errors.make}
-                    </div>
-                  )}
-                </div>
+                <Input
+                  name="make"
+                  onChange={this.handleChange}
+                  value={make}
+                  id="make"
+                  type="text"
+                  label="Make"
+                  errors={this.state.errors}
+                />
                 <div className="form-group ">
                   <label htmlFor="model">
                     <b>Model</b>
@@ -224,9 +217,7 @@ class ResultForm extends Component {
               </div>
             </div>
             <div className="row" style={{ paddingTop: "10px" }}>
-              <div className="col-sm-2">
-                <button className="btn btn-success">Confirm</button>
-              </div>
+              <div className="col-sm-2">{this.renderButton("Confirm")}</div>
             </div>
           </form>
         </div>
