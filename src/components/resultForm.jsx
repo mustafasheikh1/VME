@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Joi from "joi-browser";
+import Input from "./common/input";
 import image from "../images/sideimage2.png";
 
 class ResultForm extends Component {
@@ -77,24 +78,15 @@ class ResultForm extends Component {
           <form onSubmit={this.handleSubmit}>
             <div className="row">
               <div className="col-sm-6" style={{ borderRight: "solid" }}>
-                <div className="form-group ">
-                  <label htmlFor="make">
-                    <b>Make</b>
-                  </label>
-                  <input
-                    name="make"
-                    onChange={this.handleChange}
-                    value={make}
-                    id="make"
-                    type="text"
-                    className="form-control "
-                  />
-                  {this.state.errors.make && (
-                    <div className="alert alert-danger">
-                      {this.state.errors.make}
-                    </div>
-                  )}
-                </div>
+                <Input
+                  name="make"
+                  onChange={this.handleChange}
+                  value={make}
+                  id="make"
+                  label="Make"
+                  errors={this.state.errors}
+                />
+
                 <div className="form-group ">
                   <label htmlFor="model">
                     <b>Model</b>
