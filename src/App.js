@@ -1,15 +1,14 @@
 import { Route, Switch, Redirect } from "react-router-dom";
+import Results from "./components/results";
+import UserData from "./components/userData";
+import Home from "./components/home";
+import Navbar from "./components/navbar";
+import NotFound from "./components/notFound";
+import AboutUs from "./components/aboutUs";
+import Contact from "./components/contact";
+import ResultForm from "./components/resultForm";
+import PriceData from "./components/priceData";
 import "./App.css";
-import Results from "./results";
-import UserData from "./userData";
-import Home from "./home";
-import Navbar from "./navbar";
-import NotFound from "./notFound";
-
-import AboutUs from "./aboutUs";
-import Contact from "./contact";
-import ResultForm from './resultForm';
-import PriceData from './priceData';
 
 function App() {
   return (
@@ -17,8 +16,8 @@ function App() {
       <Navbar />
       <Switch>
         <Route path="/results" component={Results} />
-        <Route path="/formResults" component={ResultForm}/>
-        <Route path="/priceData" component={PriceData}/>
+        <Route path="/formResults" component={ResultForm} />
+        <Route path="/priceData" component={PriceData} />
         <Route path="/about" component={AboutUs} />
         <Route path="/contact" component={Contact} />
         <Route path="/user" component={UserData} />

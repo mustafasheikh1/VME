@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import image from "./imageicon.png";
+import image from "../images/imageicon.png";
 
 class UserData extends Component {
   state = {
@@ -71,7 +71,7 @@ class UserData extends Component {
               type="file"
               alt=""
             />
-            <button onClick={this.handleSubmit} className="btn btn-dark btn-sm">
+            <button onClick={this.handleSubmit} className="btn btn-dark">
               Upload
             </button>
           </div>

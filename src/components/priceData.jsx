@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import Joi from "joi-browser";
-import mileagepic from "./mileage.png";
-import city from "./registrationCityIcon.png";
+import mileagepic from "../images/mileage.png";
+import city from "../images/registrationCityIcon.png";
+
 class PriceData extends Component {
   state = {
     mileageIcon: mileagepic,

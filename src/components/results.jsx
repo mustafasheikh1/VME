@@ -1,14 +1,15 @@
 import React, { Component } from "react";
-import makeIcon from "./makeIcon2.png";
-import modelIcon from "./modelIcon2.png";
-import registrationCityIcon from "./registrationCityIcon.png";
-import fuelIcon from "./fuelIcon.png";
-import mileageIcon from "./mileageIcon2.png";
-import engineIcon from "./engineIcon.jpg";
-import transmissionIcon from "./transmissionIcon.png";
-import priceIcon from "./priceIcon.png";
-import licencePlateIcon from "./licenceplateIcon.png";
-import yearIcon from "./yearIcon2.png";
+import makeIcon from "../images/makeIcon2.png";
+import modelIcon from "../images/modelIcon2.png";
+import registrationCityIcon from "../images/registrationCityIcon.png";
+import fuelIcon from "../images/fuelIcon.png";
+import mileageIcon from "../images/mileageIcon2.png";
+import engineIcon from "../images/engineIcon.jpg";
+import transmissionIcon from "../images/transmissionIcon.png";
+import priceIcon from "../images/priceIcon.png";
+import licencePlateIcon from "../images/licenceplateIcon.png";
+import yearIcon from "../images/yearIcon2.png";
+
 class Results extends Component {
   state = {
     car: {},

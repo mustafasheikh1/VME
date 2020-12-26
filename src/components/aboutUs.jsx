@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import mercedes from "./mercedes.jpg";
+import mercedes from "../images/mercedes.jpg";
 
 class AboutUs extends Component {
   state = {

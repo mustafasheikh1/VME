@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import image from "./sideimage2.png";
 import Joi from "joi-browser";
+import image from "../images/sideimage2.png";
+
 class ResultForm extends Component {
   state = {
     car: {},

@@ -1,10 +1,11 @@
 import React, { Component } from "react";
+import carousel from "../images/dodge2.jpg";
+import frontIcon from "../images/front.png";
+import uploadIcon from "../images/uploadphoto.png";
+import resultIcon from "../images/results.png";
+import "../css/home.css";
 import TutorialCard from "./common/tutorialCard";
-import "./css/home.css";
-import carousel from "./dodge2.jpg";
-import frontIcon from "./front.png";
-import uploadIcon from "./uploadphoto.png";
-import resultIcon from "./results.png";
+
 class Home extends Component {
   state = {
     carouselImage: carousel,
