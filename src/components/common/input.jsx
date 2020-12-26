@@ -10,11 +10,7 @@ const Input = ({ name, label, errors, value, onChange }) => {
         value={value}
         name={name}
         id={name}
-<<<<<<< HEAD
-        onChnage={onChange}
-=======
         onChange={onChange}
->>>>>>> main
         className="form-control "
       />
       {errors.make && <div className="alert alert-danger">{errors.make}</div>}

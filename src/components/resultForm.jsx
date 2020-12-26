@@ -1,15 +1,12 @@
-import React, { Component } from "react";
+import React from "react";
 import Joi from "joi-browser";
 import Input from "./common/input";
-<<<<<<< HEAD
 import Form from "./common/form";
-=======
->>>>>>> main
 import image from "../images/sideimage2.png";
 
 class ResultForm extends Form {
   state = {
-    car: {},
+    data: {},
     sideIcon: image,
     errors: {},
   };
@@ -25,7 +22,7 @@ class ResultForm extends Form {
   };
 
   componentDidMount() {
-    const car = {
+    const data = {
       make: "Honda",
       model: "Accord",
       year: "18",
@@ -34,30 +31,11 @@ class ResultForm extends Form {
       transmission: "Manual",
       licencePlate: "LZX-9171",
     };
-    this.setState({ car });
+    this.setState({ data });
   }
 
-  handleChange = (e) => {
-    const car = { ...this.state.car };
-    car[e.currentTarget.name] = e.currentTarget.value;
-    this.setState({ car });
-  };
-
-  validate = () => {
-    const result = Joi.validate(this.state.car, this.schema, {
-      abortEarly: false,
-    });
-    if (!result.error) return null;
-    const errors = {};
-    for (let item of result.error.details) errors[item.path[0]] = item.message;
-    return errors;
-  };
-
-  handleSubmit = (e) => {
-    e.preventDefault();
-    const errors = this.validate();
-    this.setState({ errors: errors || {} });
-    if (errors) return;
+  doSubmit = () => {
+    //call the server
     this.props.history.push("./priceData");
   };
 
@@ -70,7 +48,7 @@ class ResultForm extends Form {
       engine,
       transmission,
       licencePlate,
-    } = this.state.car;
+    } = this.state.data;
 
     return (
       <React.Fragment>

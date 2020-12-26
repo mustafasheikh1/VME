@@ -1,9 +1,6 @@
 import { Component } from "react";
 import Joi from "joi-browser";
-<<<<<<< HEAD
-import Input from "./input";
-=======
->>>>>>> main
+
 class Form extends Component {
   state = { data: {}, errors: {} };
 
