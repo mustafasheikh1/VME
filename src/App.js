@@ -10,6 +10,7 @@ import ResultForm from "./components/resultForm";
 import PriceData from "./components/priceData";
 import Login from "./components/loginForm";
 import Signup from "./components/signup";
+import AdminPanel from "./components/adminPanel";
 import "./App.css";
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path="/results" component={Results} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
+        <Route path="/adminpanel" component={AdminPanel} />
         <Route path="/formResults" component={ResultForm} />
         <Route path="/priceData" component={PriceData} />
         <Route path="/about" component={AboutUs} />
