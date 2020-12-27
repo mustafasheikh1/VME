@@ -1,38 +1,73 @@
-import React from "react";
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import "../css/sideBar.css";
-const SideBar = () => {
-  return (
-    <React.Fragment>
-      <div className="navigation">
-        <ul>
-          <li>
-            <a href="!#">
-              <span className="icon">
-                <i class="fa fa-user" aria-hidden="true"></i>
-              </span>
-              <span className="title">Profile</span>
-            </a>
-          </li>
-          <li>
-            <a href="!#">
-              <span className="icon">
-                <i class="fa fa-users" aria-hidden="true"></i>
-              </span>
-              <span className="title">Users</span>
-            </a>
-          </li>
-          <li>
-            <a href="!#">
-              <span className="icon">
-                <i class="fa fa-cog" aria-hidden="true"></i>
-              </span>
-              <span className="title">Settings</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </React.Fragment>
-  );
-};
+
+class SideBar extends Component {
+  state = {
+    items: [],
+    selectedItem: {},
+  };
+
+  componentDidMount() {
+    const items = [
+      {
+        name: "Dashboard",
+        icon: <i className="fa fa-home" aria-hidden="true"></i>,
+        path: "/dashboard",
+      },
+      {
+        name: "Profile",
+        icon: <i className="fa fa-user" aria-hidden="true"></i>,
+        path: "/profile",
+      },
+      {
+        name: "Users",
+        icon: <i className="fa fa-users" aria-hidden="true"></i>,
+        path: "/users",
+      },
+      {
+        name: "Settings",
+        icon: <i className="fa fa-cog" aria-hidden="true"></i>,
+        path: "/settings",
+      },
+    ];
+    const selectedItem = {
+      name: "Dashboard",
+      icon: <i class="fa fa-home" aria-hidden="true"></i>,
+    };
+    this.setState({ items, selectedItem });
+  }
+
+  handleItemSelect(item) {
+    this.setState({ selectedItem: item });
+  }
+
+  render() {
+    return (
+      <React.Fragment>
+        <div className="navigation">
+          <ul>
+            {this.state.items.map((item) => (
+              <li
+                key={item.name}
+                onClick={() => this.handleItemSelect(item)}
+                className={
+                  item === this.state.selectedItem
+                    ? "activeItem"
+                    : "non-activeItem"
+                }
+              >
+                <Link to={item.path}>
+                  <span className="icon">{item.icon}</span>
+                  <span className="title">{item.name}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </React.Fragment>
+    );
+  }
+}
 
 export default SideBar;

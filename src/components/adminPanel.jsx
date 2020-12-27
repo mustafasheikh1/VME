@@ -1,30 +1,12 @@
 import React from "react";
 import SideBar from "./sideBar";
+
 const AdminPanel = () => {
   return (
-    <React.Fragment>
+    <div>
       <SideBar />
-      <div className="content">
-        <h1>Admin Panel</h1>
-        <h1>Admin Panel</h1>
-        <h1>Admin Panel</h1>
-        <h1>Admin Panel</h1>
-        <h1>Admin Panel</h1>
-        <h1>Admin Panel</h1>
-        <h1>Admin Panel</h1>
-        <h1>Admin Panel</h1>
-        <h1>Admin Panel</h1>
-        <h1>Admin Panel</h1>
-        <h1>Admin Panel</h1>
-        <h1>Admin Panel</h1>
-        <h1>Admin Panel</h1>
-        <h1>Admin Panel</h1>
-        <h1>Admin Panel</h1>
-        <h1>Admin Panel</h1>
-        <h1>Admin Panel</h1>
-        <h1>Admin Panel</h1>
-      </div>
-    </React.Fragment>
+      <div className="content"></div>
+    </div>
   );
 };
 

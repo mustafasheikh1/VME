@@ -19,6 +19,7 @@
   width: 100%;
   color: #fff;
   list-style-type: none;
+  padding-top: 80px;
 }
 
 .naviation ul li {
@@ -28,7 +29,7 @@
 }
 
 .navigation ul li:hover {
-  background: #7d7d7d;
+  background: #364452;
 }
 
 .navigation ul li a {
@@ -65,4 +66,8 @@
 .content {
   padding-left: 270px;
   font-size: 24px;
+}
+
+.activeItem {
+  background: #7d7d7d;
 }
