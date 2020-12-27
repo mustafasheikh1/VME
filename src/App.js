@@ -11,41 +11,55 @@ import ResultForm from "./components/resultForm";
 import PriceData from "./components/priceData";
 import Login from "./components/loginForm";
 import Signup from "./components/signup";
-import AdminPanel from "./components/adminPanel";
 import DashBoard from "./components/dashboard";
 import Users from "./components/users";
 import Profile from "./components/profile";
 import Settings from "./components/settings";
+import SideBar from "./components/sideBar";
+
 import "./App.css";
 
 class App extends Component {
   state = {
-    admin: true,
+    admin: false,
   };
   render() {
+    const { admin } = this.state;
     return (
-      <div>
-        <Navbar />
-        <Switch>
-          <Route path="/results" component={Results} />
-          <Route path="/login" component={Login} />
-          <Route path="/signup" component={Signup} />
-          <Route path="/adminpanel" component={AdminPanel} />
-          <Route path="/formResults" component={ResultForm} />
-          <Route path="/priceData" component={PriceData} />
-          <Route path="/about" component={AboutUs} />
-          <Route path="/contact" component={Contact} />
-          <Route path="/user" component={UserData} />
-          <Route path="/dashboard" component={DashBoard} />
-          <Route path="/users" component={Users} />
-          <Route path="/settings" component={Settings} />
-          <Route path="/profile" component={Profile} />
-          <Route path="/not-found" component={NotFound} />
-          <Redirect from="/home" to="/" />
-          <Route path="/" exact component={Home} />
-          <Redirect to="not-found" />
-        </Switch>
-      </div>
+      <React.Fragment>
+        {admin === false && (
+          <div>
+            <Navbar />
+            <Switch>
+              <Route path="/results" component={Results} />
+              <Route path="/login" component={Login} />
+              <Route path="/signup" component={Signup} />
+              <Route path="/formResults" component={ResultForm} />
+              <Route path="/priceData" component={PriceData} />
+              <Route path="/about" component={AboutUs} />
+              <Route path="/contact" component={Contact} />
+              <Route path="/user" component={UserData} />
+              <Route path="/not-found" component={NotFound} />
+              <Redirect from="/home" to="/" />
+              <Route path="/" exact component={Home} />
+              <Redirect to="not-found" />
+            </Switch>
+          </div>
+        )}
+        {admin === true && (
+          <div>
+            <SideBar />
+            <div className="content">
+              <Switch>
+                <Route path="/dashboard" component={DashBoard} />
+                <Route path="/users" component={Users} />
+                <Route path="/settings" component={Settings} />
+                <Route path="/profile" component={Profile} />
+              </Switch>
+            </div>
+          </div>
+        )}
+      </React.Fragment>
     );
   }
 }
