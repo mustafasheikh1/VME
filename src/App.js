@@ -8,8 +8,9 @@ import AboutUs from "./components/aboutUs";
 import Contact from "./components/contact";
 import ResultForm from "./components/resultForm";
 import PriceData from "./components/priceData";
-import "./App.css";
 import Login from "./components/loginForm";
+import Signup from "./components/signup";
+import "./App.css";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Switch>
         <Route path="/results" component={Results} />
         <Route path="/login" component={Login} />
+        <Route path="/signup" component={Signup} />
         <Route path="/formResults" component={ResultForm} />
         <Route path="/priceData" component={PriceData} />
         <Route path="/about" component={AboutUs} />

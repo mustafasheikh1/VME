@@ -37,6 +37,9 @@ const Navbar = () => {
                 <NavLink className="nav-link" to="/login">
                   Login
                 </NavLink>
+                <NavLink className="nav-link" to="/signup">
+                  Register
+                </NavLink>
               </div>
             </div>
           </nav>
