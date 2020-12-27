@@ -9,6 +9,7 @@ import Contact from "./components/contact";
 import ResultForm from "./components/resultForm";
 import PriceData from "./components/priceData";
 import "./App.css";
+import Login from "./components/loginForm";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Navbar />
       <Switch>
         <Route path="/results" component={Results} />
+        <Route path="/login" component={Login} />
         <Route path="/formResults" component={ResultForm} />
         <Route path="/priceData" component={PriceData} />
         <Route path="/about" component={AboutUs} />

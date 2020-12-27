@@ -14,6 +14,7 @@ class ResultForm extends Form {
     make: Joi.string().required().label("Make"),
     model: Joi.string().required().label("Model"),
     color: Joi.string().required().label("Color"),
+    estPrice: Joi.string().required().label("Price"),
     licencePlate: Joi.string().required().label("Licence Plate"),
   };
 
@@ -22,6 +23,7 @@ class ResultForm extends Form {
       make: "Honda",
       model: "Accord",
       color: "Black",
+      estPrice: "20,000 $",
       licencePlate: "LZX-9171",
     };
     this.setState({ data });
@@ -29,7 +31,7 @@ class ResultForm extends Form {
 
   doSubmit = () => {
     //call the server
-    this.props.history.push("./priceData");
+    this.props.history.push("/priceData");
   };
 
   render() {
@@ -43,7 +45,7 @@ class ResultForm extends Form {
         </p>
         <div
           className="results"
-          style={{ paddingLeft: "200px", paddingTop: "50px" }}
+          style={{ paddingLeft: "200px", paddingTop: "20px" }}
         >
           <form onSubmit={this.handleSubmit}>
             <div className="row">
@@ -51,6 +53,7 @@ class ResultForm extends Form {
                 {this.renderInput("make", "Make")}
                 {this.renderInput("model", "Model")}
                 {this.renderInput("color", "Color")}
+                {this.renderInput("estPrice", "Price")}
                 {this.renderInput("licencePlate", "Licence Plate")}
 
                 <div className="row">
@@ -63,7 +66,7 @@ class ResultForm extends Form {
                 <img
                   style={{
                     width: "400px",
-                    paddingTop: "80px",
+                    paddingTop: "95px",
                     paddingLeft: "50px",
                   }}
                   src={sideIcon}

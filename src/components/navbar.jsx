@@ -34,6 +34,9 @@ const Navbar = () => {
                 <NavLink className="nav-link" to="/contact">
                   Contact Us
                 </NavLink>
+                <NavLink className="nav-link" to="/login">
+                  Login
+                </NavLink>
               </div>
             </div>
           </nav>
