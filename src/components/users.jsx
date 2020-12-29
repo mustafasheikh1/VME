@@ -31,14 +31,20 @@ class Users extends Component {
     this.setState({ sortColumn });
   };
 
+  getPagedData = () => {
+    const { movies: allMovies, pageSize, currentPage, sortColumn } = this.state;
+
+    const sorted = _.orderBy(allMovies, [sortColumn.path], [sortColumn.order]);
+    const movies = paginate(sorted, currentPage, pageSize);
+    return { data: movies };
+  };
+
   render() {
     const { movies: allMovies, pageSize, currentPage, sortColumn } = this.state;
     const { length: count } = allMovies;
 
     if (count === 0) return <p>There are no movies in the database.</p>;
-    const sorted = _.orderBy(allMovies, [sortColumn.path], [sortColumn.order]);
-    const movies = paginate(sorted, currentPage, pageSize);
-
+    const { data: movies } = this.getPagedData();
     return (
       <React.Fragment>
         <div className="row">
