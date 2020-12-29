@@ -5,7 +5,7 @@
 }
 .navigation {
   position: fixed;
-  width: 250px;
+  width: 200px;
   height: 100%;
   background: rgb(52, 58, 64);
   transition: 0.5s;
@@ -19,7 +19,7 @@
   width: 100%;
   color: #fff;
   list-style-type: none;
-  padding-top: 80px;
+  padding-top: 120px;
 }
 
 .naviation ul li {
@@ -44,22 +44,22 @@
 .navigation ul li a .icon {
   position: relative;
   display: block;
-  min-width: 60px;
+  min-width: 80px;
   height: 60px;
   line-height: 60px;
   text-align: center;
 }
 
 .navigation ul li a .icon .fa {
-  font-size: 24px;
+  font-size: 30px;
 }
 
 .navigation ul li a .title {
   position: relative;
   display: block;
-  padding: 0 10px;
+  padding: 0;
   height: 60px;
-  line-height: 60px;
+  line-height: 55px;
   text-align: start;
   white-space: nowrap;
 }

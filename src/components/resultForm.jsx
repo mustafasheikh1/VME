@@ -5,7 +5,13 @@ import image from "../images/sideimage2.png";
 
 class ResultForm extends Form {
   state = {
-    data: {},
+    data: {
+      make: "",
+      model: "",
+      color: "",
+      estPrice: "",
+      licencePlate: "",
+    },
     sideIcon: image,
     errors: {},
   };

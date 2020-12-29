@@ -16,12 +16,11 @@ import Users from "./components/users";
 import Profile from "./components/profile";
 import Settings from "./components/settings";
 import SideBar from "./components/sideBar";
-
 import "./App.css";
 
 class App extends Component {
   state = {
-    admin: false,
+    admin: true,
   };
   render() {
     const { admin } = this.state;
@@ -55,6 +54,7 @@ class App extends Component {
                 <Route path="/users" component={Users} />
                 <Route path="/settings" component={Settings} />
                 <Route path="/profile" component={Profile} />
+                <Redirect from="/" to="/dashboard" />
               </Switch>
             </div>
           </div>
