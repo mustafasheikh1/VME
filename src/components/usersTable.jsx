@@ -4,18 +4,21 @@ import { Link } from "react-router-dom";
 class UsersTable extends Component {
   columns = [
     {
-      path: "title",
-      label: "Title",
-      content: (movie) => <Link to={`/users/${movie._id}`}>{movie.title}</Link>,
+      path: "id",
+      label: "Id",
     },
-    { path: "genre.name", label: "Genre" },
-    { path: "numberInStock", label: "Stock" },
-    { path: "dailyRentalRate", label: "Rate" },
+    {
+      path: "name",
+      label: "Name",
+      content: (user) => <Link to={`/users/${user.id}`}>{user.name}</Link>,
+    },
+    { path: "username", label: "Username" },
+    { path: "email", label: "email" },
     {
       key: "delete",
-      content: (movie) => (
+      content: (user) => (
         <button
-          onClick={() => this.props.onDelete(movie)}
+          onClick={() => this.props.onDelete(user)}
           className="btn btn-danger btn-sm"
         >
           Delete
@@ -24,11 +27,11 @@ class UsersTable extends Component {
     },
   ];
   render() {
-    const { movies, onSort, sortColumn } = this.props;
+    const { users, onSort, sortColumn } = this.props;
     return (
       <Table
         columns={this.columns}
-        data={movies}
+        data={users}
         sortColumn={sortColumn}
         onSort={onSort}
       />

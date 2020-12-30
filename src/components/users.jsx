@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getMovies } from "../services/fakeMovieService";
+import { getUsers } from "../services/userService";
 import { paginate } from "../utils/paginate";
 import Pagination from "./common/pagination";
 import UsersTable from "./usersTable";
@@ -8,20 +8,20 @@ import _ from "lodash";
 
 class Users extends Component {
   state = {
-    movies: [],
+    users: [],
     pageSize: 4,
     currentPage: 1,
     sortColumn: { path: "title", order: "asc" },
   };
 
-  componentDidMount() {
-    const movies = getMovies();
-    this.setState({ movies });
+  async componentDidMount() {
+    const { data: users } = await getUsers();
+    this.setState({ users });
   }
 
-  handleDelete = (movie) => {
-    const movies = this.state.movies.filter((m) => m._id !== movie._id);
-    this.setState({ movies });
+  handleDelete = (user) => {
+    const users = this.state.users.filter((m) => m._id !== user._id);
+    this.setState({ users });
   };
 
   handlePageChange = (page) => {
@@ -33,16 +33,16 @@ class Users extends Component {
   };
 
   getPagedData = () => {
-    const { movies: allMovies, pageSize, currentPage, sortColumn } = this.state;
+    const { users: allusers, pageSize, currentPage, sortColumn } = this.state;
 
-    const sorted = _.orderBy(allMovies, [sortColumn.path], [sortColumn.order]);
-    const movies = paginate(sorted, currentPage, pageSize);
-    return { data: movies };
+    const sorted = _.orderBy(allusers, [sortColumn.path], [sortColumn.order]);
+    const users = paginate(sorted, currentPage, pageSize);
+    return { data: users };
   };
 
   render() {
-    const { movies: allMovies, pageSize, currentPage, sortColumn } = this.state;
-    const { length: count } = allMovies;
+    const { users: allUsers, pageSize, currentPage, sortColumn } = this.state;
+    const { length: count } = allUsers;
     <Link
       to="/users/new"
       className="btn btn-dark"
@@ -50,8 +50,8 @@ class Users extends Component {
     >
       Add new user
     </Link>;
-    if (count === 0) return <p>There are no movies in the database.</p>;
-    const { data: movies } = this.getPagedData();
+    if (count === 0) return <p>There are no users in the database.</p>;
+    const { data: users } = this.getPagedData();
     return (
       <React.Fragment>
         <div className="row">
@@ -63,9 +63,9 @@ class Users extends Component {
             >
               Add new user
             </Link>
-            <p>Showing {count} movies in the database.</p>
+            <p>Showing {count} users in the database.</p>
             <UsersTable
-              movies={movies}
+              users={users}
               onDelete={this.handleDelete}
               onSort={this.handleSort}
               sortColumn={sortColumn}

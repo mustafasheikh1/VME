@@ -10,3 +10,7 @@ export function getUsers() {
 export function deleteMovie(userId) {
   return http.delete(apiEndpoint + "/" + userId);
 }
+
+export function getUser(id) {
+  return http.get(apiEndpoint + "/" + id);
+}

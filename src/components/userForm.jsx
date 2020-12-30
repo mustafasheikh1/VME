@@ -1,60 +1,45 @@
 import React from "react";
 import Form from "../components/common/form";
 import Joi from "joi-browser";
-import { getGenres } from "../services/fakeGenreService";
-import { getMovie, saveMovie } from "../services/fakeMovieService";
+import { getUser } from "../services/userService";
 class UserForm extends Form {
   state = {
     data: {
-      title: "",
-      genreId: "",
-      numberInStock: "",
-      dailyRentalRate: "",
+      id: "",
+      name: "",
+      username: "",
+      email: "",
     },
     errors: {},
-    genres: [],
   };
 
   schema = {
-    _id: Joi.string(),
-    title: Joi.string().required().label("Title"),
-    genreId: Joi.string().required().label("Genre"),
-    numberInStock: Joi.number()
-      .required()
-      .min(0)
-      .max(100)
-      .label("Number in Stock"),
-    dailyRentalRate: Joi.number()
-      .required()
-      .min(0)
-      .max(10)
-      .label("Daily Rental Rate"),
+    id: Joi.number().min(0).label("Id"),
+    name: Joi.string().required().label("Name"),
+    username: Joi.string().required().label("Username"),
+    email: Joi.string().required().label("Number in Stock"),
   };
 
-  componentDidMount() {
-    const genres = getGenres();
-    this.setState({ genres });
-    const movieId = this.props.match.params.id;
-    if (movieId === "new") return;
-
-    const movie = getMovie(movieId);
-    if (!movie) return this.props.history.replace("/not-found");
-
-    this.setState({ data: this.mapToViewModel(movie) });
+  async componentDidMount() {
+    const userId = this.props.match.params.id;
+    if (userId === "new") return;
+    const { data: user } = await getUser(userId);
+    if (!user) return this.props.history.replace("/not-found");
+    console.log(user);
+    this.setState({ data: this.mapToViewModel(user) });
   }
 
-  mapToViewModel(movie) {
+  mapToViewModel(user) {
     return {
-      _id: movie._id,
-      title: movie.title,
-      genreId: movie.genre._id,
-      numberInStock: movie.numberInStock,
-      dailyRentalRate: movie.dailyRentalRate,
+      id: user.id,
+      name: user.name,
+      username: user.username,
+      email: user.email,
     };
   }
 
   doSubmit = () => {
-    saveMovie(this.state.data);
+    //saveUser(this.state.data);
     this.props.history.push("/users");
   };
 
@@ -63,10 +48,10 @@ class UserForm extends Form {
       <React.Fragment>
         <h1>User Form</h1>
         <form onSubmit={this.handleSubmit}>
-          {this.renderInput("title", "Title")}
-          {this.renderSelect("genreId", "Genre", this.state.genres)}
-          {this.renderInput("numberInStock", "Number In Stock", "number")}
-          {this.renderInput("dailyRentalRate", "Rate")}
+          {this.renderInput("id", "Id", "number")}
+          {this.renderInput("name", "Name")}
+          {this.renderInput("username", "Username")}
+          {this.renderInput("email", "Email")}
           {this.renderButton("Save")}
         </form>
       </React.Fragment>

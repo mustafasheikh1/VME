@@ -60,7 +60,9 @@ class App extends Component {
                 <Route path="/users" component={Users} />
                 <Route path="/settings" component={Settings} />
                 <Route path="/profile" component={Profile} />
-                <Redirect from="/" to="/dashboard" />
+                <Route path="/not-found" component={NotFound} />
+                <Redirect from="/" exact to="/dashboard" />
+                <Redirect to="not-found" />
               </Switch>
             </div>
           </div>
