@@ -16,6 +16,7 @@ import Users from "./components/users";
 import Profile from "./components/profile";
 import Settings from "./components/settings";
 import SideBar from "./components/sideBar";
+import UserForm from "./components/userForm";
 import "./App.css";
 
 class App extends Component {
@@ -50,6 +51,7 @@ class App extends Component {
             <SideBar />
             <div className="content">
               <Switch>
+                <Route path="/users/:id" component={UserForm} />
                 <Route path="/dashboard" component={DashBoard} />
                 <Route path="/users" component={Users} />
                 <Route path="/settings" component={Settings} />

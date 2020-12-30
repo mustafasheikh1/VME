@@ -3,6 +3,7 @@ import { getMovies } from "../services/fakeMovieService";
 import { paginate } from "../utils/paginate";
 import Pagination from "./common/pagination";
 import UsersTable from "./usersTable";
+import { Link } from "react-router-dom";
 import _ from "lodash";
 
 class Users extends Component {
@@ -49,6 +50,13 @@ class Users extends Component {
       <React.Fragment>
         <div className="row">
           <div className="col-sm-8">
+            <Link
+              to="/users/new"
+              className="btn btn-dark"
+              style={{ marginTop: "50px" }}
+            >
+              Add new user
+            </Link>
             <p>Showing {count} movies in the database.</p>
             <UsersTable
               movies={movies}
