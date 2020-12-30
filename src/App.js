@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import Results from "./components/results";
 import UserData from "./components/userData";
 import Home from "./components/home";
@@ -17,6 +18,7 @@ import Profile from "./components/profile";
 import Settings from "./components/settings";
 import SideBar from "./components/sideBar";
 import UserForm from "./components/userForm";
+import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
 class App extends Component {
@@ -29,6 +31,7 @@ class App extends Component {
       <React.Fragment>
         {admin === false && (
           <div>
+            <ToastContainer />
             <Navbar />
             <Switch>
               <Route path="/results" component={Results} />
@@ -48,6 +51,7 @@ class App extends Component {
         )}
         {admin === true && (
           <div>
+            <ToastContainer />
             <SideBar />
             <div className="content">
               <Switch>

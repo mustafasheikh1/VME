@@ -62,11 +62,13 @@ class UserForm extends Form {
     return (
       <React.Fragment>
         <h1>User Form</h1>
-        {this.renderInput("title", "Title")}
-        {this.renderSelect("genreId", "Genre", this.state.genres)}
-        {this.renderInput("numberInStock", "Number In Stock", "number")}
-        {this.renderInput("dailyRentalRate", "Rate")}
-        {this.renderButton("Save")}
+        <form onSubmit={this.handleSubmit}>
+          {this.renderInput("title", "Title")}
+          {this.renderSelect("genreId", "Genre", this.state.genres)}
+          {this.renderInput("numberInStock", "Number In Stock", "number")}
+          {this.renderInput("dailyRentalRate", "Rate")}
+          {this.renderButton("Save")}
+        </form>
       </React.Fragment>
     );
   }

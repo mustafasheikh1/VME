@@ -43,7 +43,13 @@ class Users extends Component {
   render() {
     const { movies: allMovies, pageSize, currentPage, sortColumn } = this.state;
     const { length: count } = allMovies;
-
+    <Link
+      to="/users/new"
+      className="btn btn-dark"
+      style={{ marginTop: "50px" }}
+    >
+      Add new user
+    </Link>;
     if (count === 0) return <p>There are no movies in the database.</p>;
     const { data: movies } = this.getPagedData();
     return (
