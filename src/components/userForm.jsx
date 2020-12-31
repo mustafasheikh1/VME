@@ -20,13 +20,21 @@ class UserForm extends Form {
     email: Joi.string().required().label("Number in Stock"),
   };
 
+  async populateUser() {
+    try {
+      const userId = this.props.match.params.id;
+      if (userId === "new") return;
+
+      const { data: user } = await getUser(userId);
+      this.setState({ data: this.mapToViewModel(user) });
+    } catch (ex) {
+      if (ex.response && ex.response.status === 404)
+        return this.props.history.replace("/not-found");
+    }
+  }
+
   async componentDidMount() {
-    const userId = this.props.match.params.id;
-    if (userId === "new") return;
-    const { data: user } = await getUser(userId);
-    if (!user) return this.props.history.replace("/not-found");
-    console.log(user);
-    this.setState({ data: this.mapToViewModel(user) });
+    await this.populateUser();
   }
 
   mapToViewModel(user) {

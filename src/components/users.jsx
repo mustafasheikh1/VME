@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import { getUsers } from "../services/userService";
+import { getUsers, deleteUser } from "../services/userService";
 import { paginate } from "../utils/paginate";
+import { Link } from "react-router-dom";
 import Pagination from "./common/pagination";
 import UsersTable from "./usersTable";
-import { Link } from "react-router-dom";
 import _ from "lodash";
+import { toast } from "react-toastify";
 
 class Users extends Component {
   state = {
@@ -19,9 +20,18 @@ class Users extends Component {
     this.setState({ users });
   }
 
-  handleDelete = (user) => {
-    const users = this.state.users.filter((m) => m._id !== user._id);
+  handleDelete = async (user) => {
+    const originalUsers = this.state.users;
+    const users = originalUsers.filter((u) => u.id !== user.id);
     this.setState({ users });
+    try {
+      await deleteUser(user);
+    } catch (ex) {
+      if (ex.response && ex.response.status === 404)
+        toast.error("This user has already been deleted");
+
+      this.setState({ users: originalUsers });
+    }
   };
 
   handlePageChange = (page) => {
@@ -55,11 +65,11 @@ class Users extends Component {
     return (
       <React.Fragment>
         <div className="row">
-          <div className="col-sm-8">
+          <div className="col-sm-10">
             <Link
               to="/users/new"
               className="btn btn-dark"
-              style={{ marginTop: "50px" }}
+              style={{ marginTop: "50px", marginBottom: "20px" }}
             >
               Add new user
             </Link>

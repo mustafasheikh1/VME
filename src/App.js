@@ -51,9 +51,9 @@ class App extends Component {
         )}
         {admin === true && (
           <div>
-            <ToastContainer />
             <SideBar />
             <div className="content">
+              <ToastContainer />
               <Switch>
                 <Route path="/users/:id" component={UserForm} />
                 <Route path="/dashboard" component={DashBoard} />

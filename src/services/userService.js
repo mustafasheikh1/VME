@@ -7,10 +7,12 @@ export function getUsers() {
   return http.get(apiEndpoint);
 }
 
-export function deleteMovie(userId) {
+export function deleteUser(userId) {
   return http.delete(apiEndpoint + "/" + userId);
 }
 
 export function getUser(id) {
   return http.get(apiEndpoint + "/" + id);
 }
+
+export function saveUser(user) {}
