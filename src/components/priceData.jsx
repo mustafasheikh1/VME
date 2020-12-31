@@ -1,7 +1,6 @@
 import React from "react";
 import Joi from "joi-browser";
 import Form from "./common/form";
-import Input from "./common/input";
 import mileagepic from "../images/mileage.png";
 import city from "../images/registrationCityIcon.png";
 
@@ -27,7 +26,6 @@ class PriceData extends Form {
   };
 
   render() {
-    const { data, errors } = this.state;
     return (
       <React.Fragment>
         <form onSubmit={this.handleSubmit} style={{ paddingTop: "150px" }}>
@@ -51,23 +49,9 @@ class PriceData extends Form {
               />
             </div>
             <div className="col-sm-3">
-              <Input
-                name="mileage"
-                label="Mileage"
-                onChange={this.handleChange}
-                value={data.mileage}
-                id="mileage"
-                error={errors.mileage}
-              />
+              {this.renderInput("mileage", "Mileage")}
 
-              <Input
-                name="registrationCity"
-                label="Registration City"
-                onChange={this.handleChange}
-                value={data.registrationCity}
-                id="registrationCity"
-                error={errors.registrationCity}
-              />
+              {this.renderInput("registrationCity", "Registration")}
             </div>
           </div>
           <div style={{ marginLeft: "660px" }}>
