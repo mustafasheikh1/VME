@@ -1,7 +1,8 @@
 import React from "react";
 import Form from "../components/common/form";
 import Joi from "joi-browser";
-import { getUser } from "../services/userService";
+import { getUser, saveUser } from "../services/userService";
+import userIcon from "../images/userIcon.png";
 class UserForm extends Form {
   state = {
     data: {
@@ -46,22 +47,53 @@ class UserForm extends Form {
     };
   }
 
-  doSubmit = () => {
-    //saveUser(this.state.data);
+  doSubmit = async () => {
+    await saveUser(this.state.data);
     this.props.history.push("/users");
   };
 
   render() {
+    const { data: user } = this.state;
     return (
       <React.Fragment>
-        <h1>User Form</h1>
-        <form onSubmit={this.handleSubmit}>
-          {this.renderInput("id", "Id", "number")}
-          {this.renderInput("name", "Name")}
-          {this.renderInput("username", "Username")}
-          {this.renderInput("email", "Email")}
-          {this.renderButton("Save")}
-        </form>
+        <h1 style={{ paddingTop: "40px" }}>
+          <strong>User Form</strong>
+        </h1>
+        <div
+          className="row"
+          style={{ paddingLeft: "65px", paddingTop: "10px" }}
+        >
+          <div className="col-sm-3">
+            <img
+              src={userIcon}
+              alt=""
+              style={{ width: "150px", paddingTop: "110px" }}
+            />
+
+            {user.username && (
+              <h2 style={{ paddingTop: "10px", paddingLeft: "5px" }}>
+                <strong>{user.username} </strong>
+              </h2>
+            )}
+            {!user.username && (
+              <h2 style={{ paddingTop: "10px", paddingLeft: "5px" }}>
+                <strong>New User </strong>
+              </h2>
+            )}
+          </div>
+          <div
+            className="col sm-3"
+            style={{ borderLeft: "solid", paddingLeft: "50px" }}
+          >
+            <form onSubmit={this.handleSubmit}>
+              {this.renderInput("id", "Id", "number")}
+              {this.renderInput("name", "Name")}
+              {this.renderInput("username", "Username")}
+              {this.renderInput("email", "Email")}
+              {this.renderButton("Save")}
+            </form>
+          </div>
+        </div>
       </React.Fragment>
     );
   }

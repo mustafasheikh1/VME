@@ -55,7 +55,7 @@ class Users extends Component {
     const { length: count } = allUsers;
     <Link
       to="/users/new"
-      className="btn btn-dark"
+      className="btn btn-primary"
       style={{ marginTop: "50px" }}
     >
       Add new user
@@ -68,7 +68,7 @@ class Users extends Component {
           <div className="col-sm-10">
             <Link
               to="/users/new"
-              className="btn btn-dark"
+              className="btn btn-primary"
               style={{ marginTop: "50px", marginBottom: "20px" }}
             >
               Add new user

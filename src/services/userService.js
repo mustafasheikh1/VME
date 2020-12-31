@@ -15,4 +15,11 @@ export function getUser(id) {
   return http.get(apiEndpoint + "/" + id);
 }
 
-export function saveUser(user) {}
+export function saveUser(user) {
+  if (user.id) {
+    const body = { ...user };
+    delete body.id;
+    return http.put(apiEndpoint + "/" + user.id, body);
+  }
+  return http.post(apiEndpoint, user);
+}
