@@ -33,7 +33,8 @@ class SideBar extends Component {
     ];
     const selectedItem = {
       name: "Dashboard",
-      icon: <i class="fa fa-home" aria-hidden="true"></i>,
+      icon: <i className="fa fa-home" aria-hidden="true"></i>,
+      path: "/dashboard",
     };
     this.setState({ items, selectedItem });
   }
@@ -46,6 +47,14 @@ class SideBar extends Component {
     return (
       <React.Fragment>
         <div className="navigation">
+          <h1
+            style={{ color: "white", paddingLeft: "75px", paddingTop: "20px" }}
+          >
+            VME
+          </h1>
+          <p style={{ color: "white", paddingLeft: "20px" }}>
+            Vehicle Metadata Extraction
+          </p>
           <ul>
             {this.state.items.map((item) => (
               <li

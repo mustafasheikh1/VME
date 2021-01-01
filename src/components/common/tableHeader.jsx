@@ -30,6 +30,7 @@ class TableHeader extends Component {
               className="clickable"
               key={column.path || column.key}
               onClick={() => this.raiseSort(column.path)}
+              style={{ fontSize: "20px" }}
             >
               {column.label}
               {this.renderSortIcon(column)}

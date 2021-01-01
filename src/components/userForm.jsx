@@ -6,7 +6,6 @@ import userIcon from "../images/userIcon.png";
 class UserForm extends Form {
   state = {
     data: {
-      id: "",
       name: "",
       username: "",
       email: "",
@@ -18,13 +17,21 @@ class UserForm extends Form {
     id: Joi.number().min(0).label("Id"),
     name: Joi.string().required().label("Name"),
     username: Joi.string().required().label("Username"),
-    email: Joi.string().required().label("Number in Stock"),
+    email: Joi.string().required().label("Email"),
+    confirmPassword: Joi.string().label("Confirm Password"),
+    password: Joi.string().label("Password"),
   };
 
   async populateUser() {
     try {
       const userId = this.props.match.params.id;
-      if (userId === "new") return;
+      if (userId === "new") {
+        const data = { ...this.state.data };
+        data["password"] = "";
+        data["confirmPassword"] = "";
+        this.setState({ data });
+        return;
+      }
 
       const { data: user } = await getUser(userId);
       this.setState({ data: this.mapToViewModel(user) });
@@ -40,7 +47,6 @@ class UserForm extends Form {
 
   mapToViewModel(user) {
     return {
-      id: user.id,
       name: user.name,
       username: user.username,
       email: user.email,
@@ -56,42 +62,61 @@ class UserForm extends Form {
     const { data: user } = this.state;
     return (
       <React.Fragment>
-        <h1 style={{ paddingTop: "40px" }}>
-          <strong>User Form</strong>
-        </h1>
-        <div
-          className="row"
-          style={{ paddingLeft: "65px", paddingTop: "10px" }}
-        >
-          <div className="col-sm-3">
-            <img
-              src={userIcon}
-              alt=""
-              style={{ width: "150px", paddingTop: "110px" }}
-            />
-
-            {user.username && (
-              <h2 style={{ paddingTop: "10px", paddingLeft: "5px" }}>
-                <strong>{user.username} </strong>
-              </h2>
-            )}
-            {!user.username && (
-              <h2 style={{ paddingTop: "10px", paddingLeft: "5px" }}>
-                <strong>New User </strong>
-              </h2>
-            )}
-          </div>
+        <div className="container">
+          <h1 style={{ paddingTop: "40px" }}>
+            <strong>User Form</strong>
+          </h1>
           <div
-            className="col sm-3"
-            style={{ borderLeft: "solid", paddingLeft: "50px" }}
+            className="row"
+            style={{ paddingLeft: "65px", paddingTop: "10px" }}
           >
-            <form onSubmit={this.handleSubmit}>
-              {this.renderInput("id", "Id", "number")}
-              {this.renderInput("name", "Name")}
-              {this.renderInput("username", "Username")}
-              {this.renderInput("email", "Email")}
-              {this.renderButton("Save")}
-            </form>
+            <div className="col-sm-3">
+              <img
+                src={userIcon}
+                alt=""
+                style={{ width: "150px", paddingTop: "110px" }}
+              />
+
+              {user.username && (
+                <h2
+                  style={{
+                    paddingTop: "10px",
+                    paddingRight: "70px",
+                    fontSize: "25px",
+                    justifyContent: "center",
+                    textAlign: "center",
+                  }}
+                >
+                  <strong>{user.username} </strong>
+                </h2>
+              )}
+              {!user.username && (
+                <h2 style={{ paddingTop: "10px", paddingLeft: "5px" }}>
+                  <strong>New User </strong>
+                </h2>
+              )}
+            </div>
+            <div
+              className="col-sm-6"
+              style={{ borderLeft: "solid", paddingLeft: "50px" }}
+            >
+              <form onSubmit={this.handleSubmit}>
+                {this.renderInput("name", "Name")}
+                {this.renderInput("username", "Username")}
+                {this.renderInput("email", "Email")}
+                {this.props.match.params.id === "new" && (
+                  <React.Fragment>
+                    {this.renderInput("password", "Password", "password")}
+                    {this.renderInput(
+                      "confirmPassword",
+                      "Confirm Password",
+                      "password"
+                    )}
+                  </React.Fragment>
+                )}
+                {this.renderButton("Save")}
+              </form>
+            </div>
           </div>
         </div>
       </React.Fragment>

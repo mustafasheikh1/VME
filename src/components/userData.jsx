@@ -22,7 +22,8 @@ class UserData extends Component {
       this.setState({ error });
       return;
     }
-    this.props.history.push("./formResults");
+    const img = this.state.imageIcon;
+    this.props.history.push("./formResults", { img });
   };
 
   render() {

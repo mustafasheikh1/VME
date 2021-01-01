@@ -5,9 +5,9 @@
 }
 .navigation {
   position: fixed;
-  width: 200px;
+  width: 230px;
   height: 100%;
-  background: rgb(52, 58, 64);
+  background: #19191a;
   transition: 0.5s;
   overflow: hidden;
 }
@@ -19,7 +19,7 @@
   width: 100%;
   color: #fff;
   list-style-type: none;
-  padding-top: 120px;
+  padding-top: 150px;
 }
 
 .naviation ul li {
@@ -39,6 +39,7 @@
   display: flex;
   text-decoration: none;
   color: #fff;
+  padding-left: 20px;
 }
 
 .navigation ul li a .icon {
@@ -48,6 +49,7 @@
   height: 60px;
   line-height: 60px;
   text-align: center;
+  padding-left: 10px;
 }
 
 .navigation ul li a .icon .fa {
@@ -69,5 +71,5 @@
 }
 
 .activeItem {
-  background: #7d7d7d;
+  background: #22253d;
 }

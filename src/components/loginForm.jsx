@@ -1,10 +1,11 @@
 import React from "react";
 import Joi from "joi-browser";
 import Form from "./common/form";
+import { Link } from "react-router-dom";
 
 class Login extends Form {
   state = {
-    data: {},
+    data: { username: "", password: "" },
     errors: {},
   };
 
@@ -29,36 +30,41 @@ class Login extends Form {
         <h1>
           <strong>Login</strong>
         </h1>
-        <form onSubmit={this.handleSubmit}>
-          <div className="row">
-            <div className="col-sm-5">
-              <h2
-                style={{
-                  paddingTop: "70px",
-                  float: "right",
-                  paddingRight: "20px",
-                }}
-              >
-                <strong>
-                  Please enter your credentials to login to your account.
-                </strong>
-              </h2>
-            </div>
-            <div
-              className="col-sm-4"
+
+        <div className="row">
+          <div className="col-sm-5">
+            <h2
               style={{
-                paddingTop: "40px",
-                borderLeft: "solid",
-                paddingLeft: "40px",
-                paddingBottom: "30px",
+                paddingTop: "70px",
+                float: "right",
+                paddingRight: "20px",
               }}
             >
+              <strong>
+                Please enter your credentials to login to your account.
+              </strong>
+            </h2>
+          </div>
+
+          <div
+            className="col-sm-4"
+            style={{
+              paddingTop: "40px",
+              borderLeft: "solid",
+              paddingLeft: "40px",
+              paddingBottom: "30px",
+            }}
+          >
+            <form onSubmit={this.handleSubmit}>
               {this.renderInput("username", "Username")}
               {this.renderInput("password", "Password", "password")}
               {this.renderButton("Login")}
-            </div>
+              <Link to="/signup" style={{ paddingLeft: "200px" }}>
+                Sign Up
+              </Link>
+            </form>
           </div>
-        </form>
+        </div>
       </div>
     );
   }

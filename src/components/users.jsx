@@ -2,15 +2,16 @@ import React, { Component } from "react";
 import { getUsers, deleteUser } from "../services/userService";
 import { paginate } from "../utils/paginate";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import Pagination from "./common/pagination";
 import UsersTable from "./usersTable";
+import addUserIcon from "../images/adduser.png";
 import _ from "lodash";
-import { toast } from "react-toastify";
 
 class Users extends Component {
   state = {
     users: [],
-    pageSize: 4,
+    pageSize: 5,
     currentPage: 1,
     sortColumn: { path: "title", order: "asc" },
   };
@@ -53,27 +54,46 @@ class Users extends Component {
   render() {
     const { users: allUsers, pageSize, currentPage, sortColumn } = this.state;
     const { length: count } = allUsers;
-    <Link
-      to="/users/new"
-      className="btn btn-primary"
-      style={{ marginTop: "50px" }}
-    >
-      Add new user
-    </Link>;
-    if (count === 0) return <p>There are no users in the database.</p>;
+
+    if (count === 0)
+      return (
+        <div>
+          <img
+            src={addUserIcon}
+            alt=""
+            style={{ paddingLeft: "300px", paddingTop: "170px" }}
+          />
+
+          <Link
+            to="/users/new"
+            className="btn btn-success"
+            style={{ marginTop: "250px" }}
+          >
+            + Add User
+          </Link>
+          <p style={{ paddingLeft: "270px", fontSize: "20px" }}>
+            There are no users in the database.
+          </p>
+          <p style={{ paddingLeft: "220px", fontSize: "20px" }}>
+            Want to add some users? Click on the button
+          </p>
+        </div>
+      );
     const { data: users } = this.getPagedData();
     return (
       <React.Fragment>
         <div className="row">
-          <div className="col-sm-10">
+          <div className="col-sm-9">
             <Link
               to="/users/new"
-              className="btn btn-primary"
+              className="btn btn-success"
               style={{ marginTop: "50px", marginBottom: "20px" }}
             >
-              Add new user
+              + Add new user
             </Link>
-            <p>Showing {count} users in the database.</p>
+            <p style={{ fontSize: "20px" }}>
+              Showing {count} users in the database.
+            </p>
             <UsersTable
               users={users}
               onDelete={this.handleDelete}

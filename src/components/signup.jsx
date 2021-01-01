@@ -11,12 +11,19 @@ class Signup extends Form {
   schema = {
     username: Joi.string().required().label("Username"),
     name: Joi.string().required().label("Name"),
+    email: Joi.string().email().required().label("Email"),
     confirmPassword: Joi.string().required().label("Confirm Password"),
     password: Joi.string().required().label("Password"),
   };
 
   componentDidMount() {
-    const data = { name: "", username: "", password: "", confirmPassword: "" };
+    const data = {
+      name: "",
+      username: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    };
 
     this.setState({ data });
   }
@@ -27,36 +34,37 @@ class Signup extends Form {
 
   render() {
     return (
-      <div className="container" style={{ paddingTop: "40px" }}>
-        <h1>
-          <strong>Register</strong>
-        </h1>
+      <div className="container">
         <form onSubmit={this.handleSubmit}>
           <div className="row">
             <div className="col-sm-5">
+              <h1 style={{ paddingTop: "60px" }}>
+                <strong>Register</strong>
+              </h1>
               <h2
                 style={{
-                  paddingTop: "90px",
+                  paddingTop: "100px",
                   float: "right",
                   paddingRight: "50px",
                 }}
               >
                 <strong>
-                  Please enter these <br></br> details to <br></br>create your
-                  account.
+                  Please enter these details to create your account.
                 </strong>
               </h2>
             </div>
             <div
-              className="col-sm-4"
+              className="col-sm-5"
               style={{
                 borderLeft: "solid",
                 paddingLeft: "40px",
                 paddingBottom: "30px",
+                marginTop: "50px",
               }}
             >
               {this.renderInput("name", "Name")}
               {this.renderInput("username", "Username")}
+              {this.renderInput("email", "Email")}
               {this.renderInput("password", "Password", "password")}
               {this.renderInput(
                 "confirmPassword",
