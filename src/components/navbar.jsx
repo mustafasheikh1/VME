@@ -28,6 +28,9 @@ const Navbar = () => {
                 <NavLink className="nav-link" to="/user">
                   Upload Picture
                 </NavLink>
+                <NavLink className="nav-link" to="/ads">
+                  Ads
+                </NavLink>
                 <NavLink className="nav-link" to="/about">
                   About Us
                 </NavLink>

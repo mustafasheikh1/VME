@@ -18,6 +18,7 @@ import Profile from "./components/profile";
 import Settings from "./components/settings";
 import SideBar from "./components/sideBar";
 import UserForm from "./components/userForm";
+import Ads from "./components/ads";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
@@ -42,6 +43,7 @@ class App extends Component {
               <Route path="/about" component={AboutUs} />
               <Route path="/contact" component={Contact} />
               <Route path="/user" component={UserData} />
+              <Route path="/ads" component={Ads} />
               <Route path="/not-found" component={NotFound} />
               <Redirect from="/home" to="/" />
               <Route path="/" exact component={Home} />
