@@ -2,7 +2,7 @@ import React from "react";
 
 const TutorialCard = ({ Image, Label, Detail }) => {
   return (
-    <div className="card">
+    <div className="card text-center">
       <img
         src={Image}
         alt=""
