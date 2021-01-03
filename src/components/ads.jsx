@@ -11,6 +11,7 @@ class Ads extends Component {
     ads: [],
     currentPage: 1,
     pageSize: 8,
+    editAble: false,
   };
 
   componentDidMount() {
@@ -108,18 +109,56 @@ class Ads extends Component {
     this.setState({ currentPage: page });
   };
 
+  handleDelete = (card) => {
+    const ads = this.state.ads.filter((ad) => ad.Id !== card.Id);
+    this.setState({ ads });
+  };
+
+  handleEdit = () => {
+    let editAble = this.state.editAble;
+    editAble = editAble === true ? false : true;
+    this.setState({ editAble });
+  };
+
   render() {
     const { ads } = this.getPagedData();
     const { length: count } = this.state.ads;
-    const { pageSize, currentPage } = this.state;
+    const { pageSize, currentPage, editAble } = this.state;
+    const totalPages = Math.ceil(count / pageSize);
+    if (count === 0) return <p>There are no ads in database</p>;
     return (
       <React.Fragment>
         <div className="container" ref={this.myRef}>
-          <strong>
-            <h3 style={{ paddingLeft: "5px", paddingTop: "10px" }}>
-              Showing all {count} ads
-            </h3>
-          </strong>
+          <div className="row">
+            <div className="col-sm-3">
+              <strong>
+                <h4 style={{ paddingLeft: "5px", paddingTop: "10px" }}>
+                  Showing all {count} ads:
+                </h4>
+              </strong>
+            </div>
+
+            <div
+              className="col-sm-2 offset-sm-7"
+              style={{ paddingTop: "10px" }}
+            >
+              <strong>
+                <p style={{ fontSize: "20px" }}>
+                  Page: {currentPage}/{totalPages}
+                </p>
+              </strong>
+            </div>
+          </div>
+          {!editAble && (
+            <button className="btn btn-success" onClick={this.handleEdit}>
+              <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit
+            </button>
+          )}
+          {editAble && (
+            <button className="btn btn-primary" onClick={this.handleEdit}>
+              <i class="fa fa-check" aria-hidden="true"></i> Done
+            </button>
+          )}
           <div className="row">
             {ads.map((ad) => (
               <div
@@ -127,11 +166,21 @@ class Ads extends Component {
                 key={ad.Id}
                 style={{ paddingTop: "10px" }}
               >
-                <AdCard data={ad} />
+                <AdCard
+                  data={ad}
+                  onDelete={this.handleDelete}
+                  editProperty={editAble}
+                />
               </div>
             ))}
           </div>
-          <div style={{ paddingLeft: "95px", paddingTop: "20px" }}>
+          <div
+            style={{
+              paddingLeft: "510px",
+              paddingTop: "20px",
+              marginBottom: "50px",
+            }}
+          >
             <Pagination
               itemsCount={count}
               pageSize={pageSize}

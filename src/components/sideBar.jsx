@@ -26,6 +26,11 @@ class SideBar extends Component {
         path: "/users",
       },
       {
+        name: "Ads",
+        icon: <i className="fa fa-car" aria-hidden="true"></i>,
+        path: "/ads",
+      },
+      {
         name: "Settings",
         icon: <i className="fa fa-cog" aria-hidden="true"></i>,
         path: "/settings",

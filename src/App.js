@@ -19,12 +19,13 @@ import Settings from "./components/settings";
 import SideBar from "./components/sideBar";
 import UserForm from "./components/userForm";
 import Ads from "./components/ads";
+import DisplayAd from "./components/common/displayAd";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
 class App extends Component {
   state = {
-    admin: false,
+    admin: true,
   };
   render() {
     const { admin } = this.state;
@@ -44,6 +45,7 @@ class App extends Component {
               <Route path="/contact" component={Contact} />
               <Route path="/user" component={UserData} />
               <Route path="/ads" component={Ads} />
+              <Route path="/displayAd" component={DisplayAd} />
               <Route path="/not-found" component={NotFound} />
               <Redirect from="/home" to="/" />
               <Route path="/" exact component={Home} />
@@ -62,6 +64,8 @@ class App extends Component {
                 <Route path="/users" component={Users} />
                 <Route path="/settings" component={Settings} />
                 <Route path="/profile" component={Profile} />
+                <Route path="/ads" component={Ads} />
+                <Route path="/displayAd" component={DisplayAd} />
                 <Route path="/not-found" component={NotFound} />
                 <Redirect from="/" exact to="/dashboard" />
                 <Redirect to="not-found" />
