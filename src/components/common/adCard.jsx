@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const AdCard = ({ data, onDelete, editProperty }) => {
+const AdCard = ({ data, onDelete, editProperty, caution }) => {
   const { img, name, price, details } = data;
+
   return (
     <React.Fragment>
       <div

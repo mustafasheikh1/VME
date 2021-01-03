@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { paginate } from "../utils/paginate";
 import Pagination from "./common/pagination";
 import AdCard from "./common/adCard";
+import PopupBox from "./common/popupBox";
 import car from "../images/car.jpg";
 import car2 from "../images/car2.jpg";
 import car3 from "../images/lambo.jpg";
@@ -12,6 +13,7 @@ class Ads extends Component {
     currentPage: 1,
     pageSize: 8,
     editAble: false,
+    visibility: false,
   };
 
   componentDidMount() {
@@ -111,13 +113,23 @@ class Ads extends Component {
 
   handleDelete = (card) => {
     const ads = this.state.ads.filter((ad) => ad.Id !== card.Id);
-    this.setState({ ads });
+    const visibility = false;
+    this.setState({ ads, visibility });
   };
 
   handleEdit = () => {
     let editAble = this.state.editAble;
     editAble = editAble === true ? false : true;
     this.setState({ editAble });
+  };
+
+  handlePopupBox = () => {
+    return <PopupBox />;
+  };
+
+  handleCancel = () => {
+    const visibility = false;
+    this.setState({ visibility });
   };
 
   render() {
@@ -150,13 +162,13 @@ class Ads extends Component {
             </div>
           </div>
           {!editAble && (
-            <button className="btn btn-success" onClick={this.handleEdit}>
-              <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit
+            <button className="btn btn-warning" onClick={this.handleEdit}>
+              <i className="fa fa-pencil-square-o" aria-hidden="true"></i> Edit
             </button>
           )}
           {editAble && (
-            <button className="btn btn-primary" onClick={this.handleEdit}>
-              <i class="fa fa-check" aria-hidden="true"></i> Done
+            <button className="btn btn-success" onClick={this.handleEdit}>
+              <i className="fa fa-check" aria-hidden="true"></i> Done
             </button>
           )}
           <div className="row">
