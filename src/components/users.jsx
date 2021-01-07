@@ -61,13 +61,13 @@ class Users extends Component {
           <img
             src={addUserIcon}
             alt=""
-            style={{ paddingLeft: "300px", paddingTop: "170px" }}
+            style={{ paddingLeft: "300px", paddingTop: "120px" }}
           />
 
           <Link
             to="/users/new"
             className="btn btn-success"
-            style={{ marginTop: "250px" }}
+            style={{ marginTop: "170px" }}
           >
             + Add User
           </Link>

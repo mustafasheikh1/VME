@@ -162,7 +162,7 @@ class Ads extends Component {
             </div>
           </div>
           {!editAble && (
-            <button className="btn btn-warning" onClick={this.handleEdit}>
+            <button className="btn btn-danger" onClick={this.handleEdit}>
               <i className="fa fa-pencil-square-o" aria-hidden="true"></i> Edit
             </button>
           )}
