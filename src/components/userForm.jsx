@@ -9,6 +9,7 @@ class UserForm extends Form {
       name: "",
       username: "",
       email: "",
+      editable: false,
     },
     errors: {},
   };
@@ -42,6 +43,10 @@ class UserForm extends Form {
   }
 
   async componentDidMount() {
+    if (this.props.match.params.id === "new") {
+      const editable = true;
+      this.setState({ editable });
+    }
     await this.populateUser();
   }
 
@@ -58,14 +63,38 @@ class UserForm extends Form {
     this.props.history.push("/users");
   };
 
+  handleEdit = () => {
+    let editable = this.state.editable;
+    editable = editable === true ? false : true;
+    this.setState({ editable });
+  };
+
   render() {
-    const { data: user } = this.state;
+    const { data: user, editable } = this.state;
     return (
       <React.Fragment>
         <div className="container">
           <h1 style={{ paddingTop: "40px" }}>
             <strong>User Form</strong>
           </h1>
+          {!editable && (
+            <button
+              className="btn btn-danger"
+              onClick={this.handleEdit}
+              style={{ marginLeft: "735px" }}
+            >
+              <i className="fa fa-pencil-square-o" aria-hidden="true"></i> Edit
+            </button>
+          )}
+          {!this.props.match.params.id === "new" && editable && (
+            <button
+              className="btn btn-success"
+              onClick={this.handleEdit}
+              style={{ marginLeft: "735px" }}
+            >
+              <i className="fa fa-check" aria-hidden="true"></i> Done
+            </button>
+          )}
           <div
             className="row"
             style={{ paddingLeft: "65px", paddingTop: "10px" }}
@@ -74,7 +103,7 @@ class UserForm extends Form {
               <img
                 src={userIcon}
                 alt=""
-                style={{ width: "150px", paddingTop: "110px" }}
+                style={{ width: "150px", paddingTop: "80px" }}
               />
 
               {user.username && (
@@ -96,27 +125,55 @@ class UserForm extends Form {
                 </h2>
               )}
             </div>
-            <div
-              className="col-sm-6"
-              style={{ borderLeft: "solid", paddingLeft: "50px" }}
-            >
-              <form onSubmit={this.handleSubmit}>
-                {this.renderInput("name", "Name")}
-                {this.renderInput("username", "Username")}
-                {this.renderInput("email", "Email")}
-                {this.props.match.params.id === "new" && (
-                  <React.Fragment>
-                    {this.renderInput("password", "Password", "password")}
-                    {this.renderInput(
-                      "confirmPassword",
-                      "Confirm Password",
-                      "password"
-                    )}
-                  </React.Fragment>
-                )}
-                {this.renderButton("Save")}
-              </form>
-            </div>
+            {editable && (
+              <div
+                className="col-sm-6"
+                style={{ borderLeft: "solid", paddingLeft: "50px" }}
+              >
+                <form onSubmit={this.handleSubmit}>
+                  {this.renderInput("name", "Name")}
+                  {this.renderInput("username", "Username")}
+                  {this.renderInput("email", "Email")}
+                  {this.props.match.params.id === "new" && (
+                    <React.Fragment>
+                      {this.renderInput("password", "Password", "password")}
+                      {this.renderInput(
+                        "confirmPassword",
+                        "Confirm Password",
+                        "password"
+                      )}
+                    </React.Fragment>
+                  )}
+                  {this.renderButton("Save")}
+                </form>
+              </div>
+            )}
+            {!editable && (
+              <div className="col-sm-8">
+                <table className="table">
+                  <tbody>
+                    <tr>
+                      <td>
+                        <h3>Name:</h3>
+                        <p>{user.name}</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <h3>Username:</h3>
+                        <p>{user.username}</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <h3>Email:</h3>
+                        <p>{user.email}</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            )}
           </div>
         </div>
       </React.Fragment>

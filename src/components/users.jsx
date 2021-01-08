@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import Pagination from "./common/pagination";
 import UsersTable from "./usersTable";
 import addUserIcon from "../images/adduser.png";
+import PopupBox from "./common/popupBox";
 import _ from "lodash";
 
 class Users extends Component {
@@ -14,6 +15,7 @@ class Users extends Component {
     pageSize: 5,
     currentPage: 1,
     sortColumn: { path: "title", order: "asc" },
+    display: false,
   };
 
   async componentDidMount() {
@@ -23,14 +25,15 @@ class Users extends Component {
 
   handleDelete = async (user) => {
     const originalUsers = this.state.users;
+    const display = false;
+
     const users = originalUsers.filter((u) => u.id !== user.id);
-    this.setState({ users });
+    this.setState({ users, display });
     try {
       await deleteUser(user);
     } catch (ex) {
       if (ex.response && ex.response.status === 404)
         toast.error("This user has already been deleted");
-
       this.setState({ users: originalUsers });
     }
   };
@@ -49,6 +52,16 @@ class Users extends Component {
     const sorted = _.orderBy(allusers, [sortColumn.path], [sortColumn.order]);
     const users = paginate(sorted, currentPage, pageSize);
     return { data: users };
+  };
+
+  renderPopupBox = (data) => {
+    const display = true;
+    this.setState({ display, data });
+  };
+
+  handleCancel = () => {
+    const display = false;
+    this.setState({ display });
   };
 
   render() {
@@ -82,8 +95,16 @@ class Users extends Component {
     const { data: users } = this.getPagedData();
     return (
       <React.Fragment>
+        {this.state.display && (
+          <PopupBox
+            onCancel={this.handleCancel}
+            data={this.state.data}
+            onDelete={this.handleDelete}
+            label={"user"}
+          />
+        )}
         <div className="row">
-          <div className="col-sm-9">
+          <div className="col-sm-12">
             <Link
               to="/users/new"
               className="btn btn-success"
@@ -91,12 +112,14 @@ class Users extends Component {
             >
               + Add new user
             </Link>
+
             <p style={{ fontSize: "20px" }}>
               Showing {count} users in the database.
             </p>
+
             <UsersTable
               users={users}
-              onDelete={this.handleDelete}
+              onDelete={this.renderPopupBox}
               onSort={this.handleSort}
               sortColumn={sortColumn}
             />

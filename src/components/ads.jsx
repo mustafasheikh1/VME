@@ -128,8 +128,6 @@ class Ads extends Component {
   renderPopupBox = (data) => {
     const display = true;
     this.setState({ display, data });
-
-    <PopupBox />;
   };
 
   handleCancel = () => {
@@ -150,6 +148,7 @@ class Ads extends Component {
             onCancel={this.handleCancel}
             data={this.state.data}
             onDelete={this.handleDelete}
+            label={"Car"}
           />
         )}
         <div className="container" ref={this.myRef}>

@@ -1,6 +1,6 @@
 import React from "react";
 
-const PopupBox = ({ onCancel, onDelete, data }) => {
+const PopupBox = ({ onCancel, onDelete, data, label }) => {
   console.log(data);
   return (
     <div
@@ -33,7 +33,7 @@ const PopupBox = ({ onCancel, onDelete, data }) => {
         }}
       ></i>
       <h1 style={{ fontSize: "25px", color: "#1b2631", marginBottom: "5px" }}>
-        Your account will be deleted Permanently!
+        Your {label} will be deleted Permanently!
       </h1>
       <label style={{ fontSize: "20px", color: "#404040" }}>
         Are you sure to proceed?
