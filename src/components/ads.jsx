@@ -13,7 +13,8 @@ class Ads extends Component {
     currentPage: 1,
     pageSize: 8,
     editAble: false,
-    visibility: false,
+    display: false,
+    data: "",
   };
 
   componentDidMount() {
@@ -95,6 +96,7 @@ class Ads extends Component {
   constructor(props) {
     super(props);
     this.myRef = React.createRef();
+    this.renderPopupBox = this.renderPopupBox.bind(this);
   }
 
   getPagedData = () => {
@@ -111,10 +113,10 @@ class Ads extends Component {
     this.setState({ currentPage: page });
   };
 
-  handleDelete = (card) => {
-    const ads = this.state.ads.filter((ad) => ad.Id !== card.Id);
-    const visibility = false;
-    this.setState({ ads, visibility });
+  handleDelete = (data) => {
+    const ads = this.state.ads.filter((ad) => ad.Id !== data.Id);
+    const display = false;
+    this.setState({ ads, display });
   };
 
   handleEdit = () => {
@@ -123,13 +125,16 @@ class Ads extends Component {
     this.setState({ editAble });
   };
 
-  handlePopupBox = () => {
-    return <PopupBox />;
+  renderPopupBox = (data) => {
+    const display = true;
+    this.setState({ display, data });
+
+    <PopupBox />;
   };
 
   handleCancel = () => {
-    const visibility = false;
-    this.setState({ visibility });
+    const display = false;
+    this.setState({ display });
   };
 
   render() {
@@ -140,6 +145,13 @@ class Ads extends Component {
     if (count === 0) return <p>There are no ads in database</p>;
     return (
       <React.Fragment>
+        {this.state.display && (
+          <PopupBox
+            onCancel={this.handleCancel}
+            data={this.state.data}
+            onDelete={this.handleDelete}
+          />
+        )}
         <div className="container" ref={this.myRef}>
           <div className="row">
             <div className="col-sm-3">
@@ -180,7 +192,7 @@ class Ads extends Component {
               >
                 <AdCard
                   data={ad}
-                  onDelete={this.handleDelete}
+                  onDelete={this.renderPopupBox}
                   editProperty={editAble}
                 />
               </div>

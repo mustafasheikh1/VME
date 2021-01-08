@@ -1,6 +1,7 @@
 import React from "react";
 
 const PopupBox = ({ onCancel, onDelete, data }) => {
+  console.log(data);
   return (
     <div
       className="popup_box"
