@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
+
 const Navbar = () => {
   return (
     <React.Fragment>
@@ -26,10 +27,10 @@ const Navbar = () => {
                   Home <span className="sr-only">(current)</span>
                 </NavLink>
                 <NavLink className="nav-link" to="/user">
-                  Upload Picture
+                  Evaluate Car
                 </NavLink>
                 <NavLink className="nav-link" to="/ads">
-                  Ads
+                  Cars
                 </NavLink>
                 <NavLink className="nav-link" to="/about">
                   About Us
@@ -37,10 +38,20 @@ const Navbar = () => {
                 <NavLink className="nav-link" to="/contact">
                   Contact Us
                 </NavLink>
-                <NavLink className="nav-link" to="/login">
+                <NavLink
+                  className="nav-link"
+                  to="/login"
+                  style={{
+                    paddingLeft: "700px",
+                  }}
+                >
                   Login
                 </NavLink>
-                <NavLink className="nav-link" to="/signup">
+                <NavLink
+                  className="nav-link"
+                  to="/signup"
+                  style={{ paddingLeft: "10px" }}
+                >
                   Register
                 </NavLink>
               </div>

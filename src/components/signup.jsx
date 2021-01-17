@@ -13,7 +13,7 @@ class Signup extends Form {
     name: Joi.string().required().label("Name"),
     email: Joi.string().email().required().label("Email"),
     confirmPassword: Joi.string().required().label("Confirm Password"),
-    password: Joi.string().required().label("Password"),
+    password: Joi.string().min(6).required().label("Password"),
   };
 
   componentDidMount() {
@@ -29,6 +29,18 @@ class Signup extends Form {
   }
 
   doSubmit = () => {
+    const { password, confirmPassword } = this.state.data;
+    if (password !== confirmPassword) {
+      const error = (
+        <p style={{ color: "red", fontSize: "20px" }}>
+          <b>Note: </b>The password does not match. Please enter the correct
+          Password!
+        </p>
+      );
+      this.setState({ error });
+      return;
+    }
+    //call the server
     this.props.history.push("/");
   };
 
@@ -38,12 +50,13 @@ class Signup extends Form {
         <form onSubmit={this.handleSubmit}>
           <div className="row">
             <div className="col-sm-5">
-              <h1 style={{ paddingTop: "60px" }}>
+              <h1 style={{ paddingTop: "30px" }}>
                 <strong>Register</strong>
               </h1>
+
               <h2
                 style={{
-                  paddingTop: "100px",
+                  paddingTop: "120px",
                   float: "right",
                   paddingRight: "50px",
                 }}
@@ -54,12 +67,12 @@ class Signup extends Form {
               </h2>
             </div>
             <div
-              className="col-sm-5"
+              className="col-sm-6"
               style={{
                 borderLeft: "solid",
                 paddingLeft: "40px",
-                paddingBottom: "30px",
-                marginTop: "50px",
+                paddingBottom: "10px",
+                marginTop: "40px",
               }}
             >
               {this.renderInput("name", "Name")}
@@ -75,6 +88,18 @@ class Signup extends Form {
             </div>
           </div>
         </form>
+        {this.state.error && (
+          <div
+            id="warning"
+            style={{
+              paddingLeft: "150px",
+              paddingTop: "10px",
+              marginBottom: "30px",
+            }}
+          >
+            {this.state.error}
+          </div>
+        )}
       </div>
     );
   }

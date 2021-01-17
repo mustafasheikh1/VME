@@ -5,17 +5,17 @@ import { Link } from "react-router-dom";
 
 class Login extends Form {
   state = {
-    data: { username: "", password: "" },
+    data: { email: "", password: "" },
     errors: {},
   };
 
   schema = {
-    username: Joi.string().required().label("Username"),
+    email: Joi.string().email().required().label("E-mail"),
     password: Joi.string().required().label("Password"),
   };
 
   componentDidMount() {
-    const data = { username: "", password: "" };
+    const data = { email: "", password: "" };
     this.setState({ data });
   }
 
@@ -56,7 +56,7 @@ class Login extends Form {
             }}
           >
             <form onSubmit={this.handleSubmit}>
-              {this.renderInput("username", "Username")}
+              {this.renderInput("email", "E-mail")}
               {this.renderInput("password", "Password", "password")}
               {this.renderButton("Login")}
               <Link to="/signup" style={{ paddingLeft: "200px" }}>

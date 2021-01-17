@@ -19,6 +19,17 @@ const Profile = (props) => {
                 paddingTop: "130px",
               }}
             />
+            <h2
+              style={{
+                paddingTop: "10px",
+                paddingRight: "70px",
+                fontSize: "25px",
+                justifyContent: "center",
+                textAlign: "center",
+              }}
+            >
+              <strong>Usman Afzal </strong>
+            </h2>
           </div>
           <div className="col-sm-8">
             <table className="table">

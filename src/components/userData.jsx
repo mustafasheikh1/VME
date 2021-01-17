@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import image from "../images/imageicon.png";
-
 class UserData extends Component {
   state = {
     imageIcon: image,
@@ -27,6 +26,8 @@ class UserData extends Component {
   };
 
   render() {
+    const { user, history } = this.props;
+    if (!user) history.push("/login");
     return (
       <React.Fragment>
         <div className="row" style={{ paddingTop: "70px" }}>
@@ -71,7 +72,7 @@ class UserData extends Component {
               type="file"
               alt=""
             />
-            <button onClick={this.handleSubmit} className="btn btn-dark">
+            <button onClick={this.handleSubmit} className="btn btn-success">
               Upload
             </button>
           </div>

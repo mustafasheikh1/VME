@@ -28,6 +28,7 @@ import PasswordChange from "./components/passwordChange";
 class App extends Component {
   state = {
     admin: true,
+    user: true,
   };
   render() {
     const { admin } = this.state;
@@ -45,9 +46,15 @@ class App extends Component {
               <Route path="/priceData" component={PriceData} />
               <Route path="/about" component={AboutUs} />
               <Route path="/contact" component={Contact} />
-              <Route path="/user" component={UserData} />
+              <Route
+                path="/user"
+                render={(props) => (
+                  <UserData {...props} user={this.state.user} />
+                )}
+              />
               <Route path="/ads" component={Ads} />
               <Route path="/displayAd" component={DisplayAd} />
+              <Route path="/passwordChange" component={PasswordChange} />
               <Route path="/not-found" component={NotFound} />
               <Redirect from="/home" to="/" />
               <Route path="/" exact component={Home} />

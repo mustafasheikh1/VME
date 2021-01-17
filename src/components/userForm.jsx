@@ -9,8 +9,8 @@ class UserForm extends Form {
       name: "",
       username: "",
       email: "",
-      editable: false,
     },
+    editable: false,
     errors: {},
   };
 
@@ -18,9 +18,9 @@ class UserForm extends Form {
     id: Joi.number().min(0).label("Id"),
     name: Joi.string().required().label("Name"),
     username: Joi.string().required().label("Username"),
-    email: Joi.string().required().label("Email"),
+    email: Joi.string().email().required().label("Email"),
     confirmPassword: Joi.string().label("Confirm Password"),
-    password: Joi.string().label("Password"),
+    password: Joi.string().min(6).label("Password"),
   };
 
   async populateUser() {
@@ -59,6 +59,17 @@ class UserForm extends Form {
   }
 
   doSubmit = async () => {
+    const { password, confirmPassword } = this.state.data;
+    if (password !== confirmPassword) {
+      const error = (
+        <p style={{ color: "red", fontSize: "20px" }}>
+          <b>Note: </b>The password does not match. Please enter the correct
+          Password!
+        </p>
+      );
+      this.setState({ error });
+      return;
+    }
     await saveUser(this.state.data);
     this.props.history.push("/users");
   };
@@ -77,6 +88,18 @@ class UserForm extends Form {
           <h1 style={{ paddingTop: "40px" }}>
             <strong>User Form</strong>
           </h1>
+          {this.state.error && (
+            <div
+              id="warning"
+              style={{
+                paddingLeft: "150px",
+                paddingTop: "10px",
+                marginBottom: "30px",
+              }}
+            >
+              {this.state.error}
+            </div>
+          )}
           {!editable && (
             <button
               className="btn btn-danger"

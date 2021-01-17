@@ -5,7 +5,11 @@ import "../css/sideBar.css";
 class SideBar extends Component {
   state = {
     items: [],
-    selectedItem: {},
+    selectedItem: {
+      name: "Dashboard",
+      icon: <i className="fa fa-home" aria-hidden="true"></i>,
+      path: "/dashboard",
+    },
   };
 
   componentDidMount() {
@@ -15,33 +19,25 @@ class SideBar extends Component {
         icon: <i className="fa fa-home" aria-hidden="true"></i>,
         path: "/dashboard",
       },
-      {
-        name: "Profile",
-        icon: <i className="fa fa-user" aria-hidden="true"></i>,
-        path: "/profile",
-      },
+
       {
         name: "Users",
         icon: <i className="fa fa-users" aria-hidden="true"></i>,
         path: "/users",
       },
       {
-        name: "Ads",
+        name: "Cars",
         icon: <i className="fa fa-car" aria-hidden="true"></i>,
         path: "/ads",
       },
       {
-        name: "Settings",
-        icon: <i className="fa fa-cog" aria-hidden="true"></i>,
-        path: "/settings",
+        name: "Profile",
+        icon: <i className="fa fa-user" aria-hidden="true"></i>,
+        path: "/profile",
       },
     ];
-    const selectedItem = {
-      name: "Dashboard",
-      icon: <i className="fa fa-home" aria-hidden="true"></i>,
-      path: "/dashboard",
-    };
-    this.setState({ items, selectedItem });
+
+    this.setState({ items });
   }
 
   handleItemSelect(item) {

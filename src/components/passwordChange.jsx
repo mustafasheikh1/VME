@@ -14,7 +14,7 @@ class PasswordChange extends Form {
 
   schema = {
     newPassword: Joi.string().min(6).required().label("Password"),
-    confirmPassword: Joi.string().min(6).required().label("Confirm Password"),
+    confirmPassword: Joi.string().required().label("Confirm Password"),
   };
 
   doSubmit = () => {
@@ -30,7 +30,7 @@ class PasswordChange extends Form {
       return;
     }
     //call the server
-    this.props.history.push("/");
+    window.location = "/";
   };
 
   render() {
