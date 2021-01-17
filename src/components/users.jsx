@@ -12,7 +12,7 @@ import _ from "lodash";
 class Users extends Component {
   state = {
     users: [],
-    pageSize: 5,
+    pageSize: 7,
     currentPage: 1,
     sortColumn: { path: "title", order: "asc" },
     display: false,
@@ -103,33 +103,32 @@ class Users extends Component {
             label={"user"}
           />
         )}
-        <div className="row">
-          <div className="col-sm-12">
-            <Link
-              to="/users/new"
-              className="btn btn-success"
-              style={{ marginTop: "50px", marginBottom: "20px" }}
-            >
-              + Add new user
-            </Link>
 
-            <p style={{ fontSize: "20px" }}>
-              Showing {count} users in the database.
-            </p>
+        <div className="col-sm-12">
+          <Link
+            to="/users/new"
+            className="btn btn-success"
+            style={{ marginTop: "10px" }}
+          >
+            + Add new user
+          </Link>
 
-            <UsersTable
-              users={users}
-              onDelete={this.renderPopupBox}
-              onSort={this.handleSort}
-              sortColumn={sortColumn}
-            />
-            <Pagination
-              itemsCount={count}
-              pageSize={pageSize}
-              currentPage={currentPage}
-              onPageChange={this.handlePageChange}
-            />
-          </div>
+          <p style={{ fontSize: "20px" }}>
+            Showing {count} users in the database.
+          </p>
+
+          <UsersTable
+            users={users}
+            onDelete={this.renderPopupBox}
+            onSort={this.handleSort}
+            sortColumn={sortColumn}
+          />
+          <Pagination
+            itemsCount={count}
+            pageSize={pageSize}
+            currentPage={currentPage}
+            onPageChange={this.handlePageChange}
+          />
         </div>
       </React.Fragment>
     );

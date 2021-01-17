@@ -1,7 +1,7 @@
 import React from "react";
 import userIcon from "../images/userIcon.png";
-import Ads from "./ads";
-const Profile = () => {
+
+const Profile = (props) => {
   return (
     <React.Fragment>
       <h1>
@@ -56,6 +56,7 @@ const Profile = () => {
       <button
         className="btn btn-success"
         style={{ marginBottom: "50px", marginLeft: "290px" }}
+        onClick={() => props.history.push("/passwordChange")}
       >
         Change Password
       </button>

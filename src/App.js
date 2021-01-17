@@ -23,6 +23,7 @@ import DisplayAd from "./components/common/displayAd";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 import PopupBox from "./components/common/popupBox";
+import PasswordChange from "./components/passwordChange";
 
 class App extends Component {
   state = {
@@ -68,6 +69,7 @@ class App extends Component {
                 <Route path="/ads" component={Ads} />
                 <Route path="/displayAd" component={DisplayAd} />
                 <Route path="/popup" component={PopupBox} />
+                <Route path="/passwordChange" component={PasswordChange} />
                 <Route path="/not-found" component={NotFound} />
                 <Redirect from="/" exact to="/dashboard" />
                 <Redirect to="not-found" />

@@ -22,7 +22,7 @@ class PriceData extends Form {
 
   doSubmit = () => {
     //call the server
-    this.props.history.push("./results");
+    this.props.history.push("/results");
   };
 
   render() {
