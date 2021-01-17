@@ -11,72 +11,74 @@ const DisplayAd = (props) => {
   const { name, price, img, model, color, licensePlate } = data;
   return (
     <React.Fragment>
-      <div className="container" style={{ paddingTop: "60px" }}>
-        <div className="row">
-          <div className="col-sm-1" style={{ paddingTop: "10px" }}>
-            <img style={{ width: "120px" }} src={makeIcon} alt="" />
-            <h4 style={{ marginLeft: "30px" }}>Brand</h4>
-          </div>
-          <div
-            className="col-sm-2"
-            style={{ paddingLeft: "60px", paddingTop: "50px" }}
-          >
-            <h4>
-              <b>{name}</b>
-            </h4>
-          </div>
-          <div className="col-sm-1">
-            <img style={{ width: "120px" }} src={modelIcon} alt="" />
-            <h4 style={{ marginLeft: "30px" }}>Model</h4>
-          </div>
-          <div
-            className="col-sm-2"
-            style={{ paddingLeft: "60px", paddingTop: "40px" }}
-          >
-            <h4>
-              <b>{model}</b>
-            </h4>
-          </div>
+      <div
+        className="col-sm-10"
+        style={{ paddingTop: "20px", paddingLeft: "90px" }}
+      >
+        <div className="card mb-3">
+          <img className="card-img-top" src={img} alt="" />
         </div>
-        <div className="row">
-          <div className="col-sm-1">
-            <img style={{ width: "120px" }} src={colorIcon} alt="" />
-            <h4 style={{ marginLeft: "30px" }}>Color</h4>
-          </div>
-          <div
-            className="col-sm-2"
-            style={{ paddingLeft: "60px", paddingTop: "40px" }}
-          >
-            <h4>
-              <b>{color}</b>
-            </h4>
-          </div>
-          <div className="col-sm-1">
-            <img style={{ width: "120px" }} src={priceIcon} alt="" />
-            <h4 style={{ marginLeft: "30px" }}>Price</h4>
-          </div>
-          <div
-            className="col-sm-2"
-            style={{ paddingLeft: "60px", paddingTop: "40px" }}
-          >
-            <h4>
-              <b>{price}</b>
-            </h4>
-          </div>
+      </div>
+
+      <div className="row" style={{ paddingLeft: "90px" }}>
+        <div className="col-sm-1">
+          <img style={{ width: "100px" }} src={makeIcon} alt="" />
+          <h4 style={{ marginLeft: "20px" }}>Brand</h4>
         </div>
-        <div className="row">
-          <div className="col-sm-1">
-            <img style={{ width: "120px" }} src={licencePlateIcon} alt="" />
-            <h4>Licence Plate</h4>
-          </div>
-          <div
-            className="col-sm-3"
-            style={{ paddingLeft: "60px", paddingTop: "40px" }}
-          >
-            <h4>
-              <b>{licensePlate}</b>
-            </h4>
-          </div>
+        <div
+          className="col-sm-2"
+          style={{ paddingLeft: "50px", paddingTop: "30px" }}
+        >
+          <h4>
+            <b>{name}</b>
+          </h4>
+        </div>
+        <div className="col-sm-2" style={{ paddingLeft: "90px" }}>
+          <img style={{ width: "100px" }} src={modelIcon} alt="" />
+          <h4 style={{ marginLeft: "30px" }}>Model</h4>
+        </div>
+        <div
+          className="col-sm-2"
+          style={{ paddingLeft: "30px", paddingTop: "30px" }}
+        >
+          <h4>
+            <b>{model}</b>
+          </h4>
+        </div>
+        <div className="col-sm-1">
+          <img style={{ width: "100px" }} src={priceIcon} alt="" />
+          <h4 style={{ marginLeft: "20px" }}>Price</h4>
+        </div>
+        <div
+          className="col-sm-2"
+          style={{ paddingLeft: "30px", paddingTop: "30px" }}
+        >
+          <h4>
+            <b>{price}</b>
+          </h4>
+        </div>
+      </div>
+      <div className="row" style={{ paddingLeft: "100px" }}>
+        <div className="col-sm-2" style={{ paddingLeft: "70px" }}>
+          <img style={{ width: "100px" }} src={colorIcon} alt="" />
+          <h4 style={{ marginLeft: "20px" }}>Color</h4>
+        </div>
+        <div
+          className="col-sm-2"
+          style={{ paddingLeft: "30px", paddingTop: "30px" }}
+        >
+          <h4>
+            <b>{color}</b>
+          </h4>
+        </div>
+        <div className="col-sm-3" style={{ paddingLeft: "100px" }}>
+          <img style={{ width: "100px" }} src={licencePlateIcon} alt="" />
+          <h4>Licence Plate</h4>
+        </div>
+        <div className="col-sm-3" style={{ paddingTop: "30px" }}>
+          <h4>
+            <b>{licensePlate}</b>
+          </h4>
         </div>
       </div>
     </React.Fragment>
