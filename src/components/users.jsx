@@ -8,6 +8,7 @@ import UsersTable from "./usersTable";
 import addUserIcon from "../images/adduser.png";
 import PopupBox from "./common/popupBox";
 import _ from "lodash";
+import SearchBox from "./common/searchBox";
 
 class Users extends Component {
   state = {
@@ -16,11 +17,14 @@ class Users extends Component {
     currentPage: 1,
     sortColumn: { path: "title", order: "asc" },
     display: false,
+    searchQuery: "",
+    originalCount: "",
   };
 
   async componentDidMount() {
     const { data: users } = await getUsers();
-    this.setState({ users });
+    const originalCount = users.length;
+    this.setState({ users, originalCount });
   }
 
   handleDelete = async (user) => {
@@ -47,11 +51,23 @@ class Users extends Component {
   };
 
   getPagedData = () => {
-    const { users: allusers, pageSize, currentPage, sortColumn } = this.state;
+    const {
+      users: allusers,
+      pageSize,
+      currentPage,
+      sortColumn,
+      searchQuery,
+    } = this.state;
 
-    const sorted = _.orderBy(allusers, [sortColumn.path], [sortColumn.order]);
+    let filtered = allusers;
+    if (searchQuery)
+      filtered = allusers.filter((u) =>
+        u.name.toLowerCase().startsWith(searchQuery.toLowerCase())
+      );
+
+    const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);
     const users = paginate(sorted, currentPage, pageSize);
-    return { data: users };
+    return { totalCount: filtered.length, data: users };
   };
 
   renderPopupBox = (data) => {
@@ -64,11 +80,21 @@ class Users extends Component {
     this.setState({ display });
   };
 
-  render() {
-    const { users: allUsers, pageSize, currentPage, sortColumn } = this.state;
-    const { length: count } = allUsers;
+  handleSearch = (query) => {
+    this.setState({ searchQuery: query, currentPage: 1 });
+  };
 
-    if (count === 0)
+  render() {
+    const {
+      pageSize,
+      currentPage,
+      sortColumn,
+      searchQuery,
+      originalCount,
+    } = this.state;
+    const { data: users, totalCount: count } = this.getPagedData();
+
+    if (originalCount === 0)
       return (
         <div>
           <img
@@ -92,7 +118,7 @@ class Users extends Component {
           </p>
         </div>
       );
-    const { data: users } = this.getPagedData();
+
     return (
       <React.Fragment>
         {this.state.display && (
@@ -103,16 +129,21 @@ class Users extends Component {
             label={"user"}
           />
         )}
-
+        <div className="row">
+          <div className="col-sm-2">
+            <Link
+              to="/users/new"
+              className="btn btn-success"
+              style={{ marginTop: "15px", marginLeft: "10px", float: "right" }}
+            >
+              + Add User
+            </Link>
+          </div>
+          <div className="col-sm-7">
+            <SearchBox value={searchQuery} onChange={this.handleSearch} />
+          </div>
+        </div>
         <div className="col-sm-12">
-          <Link
-            to="/users/new"
-            className="btn btn-success"
-            style={{ marginTop: "10px" }}
-          >
-            + Add new user
-          </Link>
-
           <p style={{ fontSize: "20px" }}>
             Showing {count} users in the database.
           </p>
