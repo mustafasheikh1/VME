@@ -3,8 +3,9 @@ import carousel from "../images/dodge2.jpg";
 import frontIcon from "../images/front.png";
 import uploadIcon from "../images/uploadphoto.png";
 import resultIcon from "../images/results.png";
-import "../css/home.css";
 import TutorialCard from "./common/tutorialCard";
+import createAccountIcon from "../images/createAccountIcon.png";
+import "../css/home.css";
 
 class Home extends Component {
   state = {
@@ -12,18 +13,24 @@ class Home extends Component {
     cards: [
       {
         _id: 1,
+        Image: createAccountIcon,
+        Label: "Create an Account",
+        Detail: "Create an account by clicking Register button",
+      },
+      {
+        _id: 2,
         Image: frontIcon,
         Label: "Take the Photo",
         Detail: "Click the image of the car from the front",
       },
       {
-        _id: 2,
+        _id: 3,
         Image: uploadIcon,
         Label: "Upload the Photo",
         Detail: "Click the image of the car from the front",
       },
       {
-        _id: 3,
+        _id: 4,
         Image: resultIcon,
         Label: "Get the Results",
         Detail: "You can check the auto generated Results",
@@ -32,7 +39,7 @@ class Home extends Component {
   };
 
   handleClick = () => {
-    this.props.history.push("./user");
+    this.props.history.push("/user");
   };
 
   render() {
@@ -71,8 +78,8 @@ class Home extends Component {
         <div className="row">
           {this.state.cards.map((card) => (
             <div
-              className="col-sm-3 offset-sm-1"
-              style={{ paddingTop: "20px" }}
+              className="col-sm-3"
+              style={{ paddingTop: "20px", paddingLeft: "55px" }}
               key={card._id}
             >
               <TutorialCard

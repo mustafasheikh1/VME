@@ -12,7 +12,7 @@ class ResultForm extends Form {
       estPrice: "",
       licencePlate: "",
     },
-    sideIcon: this.props.location.state.img,
+    sideIcon: image,
     errors: {},
   };
 
@@ -42,6 +42,11 @@ class ResultForm extends Form {
 
   render() {
     const { sideIcon } = this.state;
+    try {
+      const sideIcon = this.props.location.state.img;
+    } catch (error) {
+      window.location = "/not-found";
+    }
     return (
       <React.Fragment>
         <p style={{ paddingTop: "20px", paddingLeft: "50px" }}>

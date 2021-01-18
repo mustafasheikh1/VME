@@ -26,12 +26,17 @@ class PriceData extends Form {
   };
 
   render() {
+    try {
+      const sideIcon = this.props.location.state.img;
+    } catch (error) {
+      window.location = "/not-found";
+    }
     return (
       <React.Fragment>
         <form onSubmit={this.handleSubmit} style={{ paddingTop: "150px" }}>
           <div className="row" style={{ paddingLeft: "125px" }}>
             <div className="col-sm-4" style={{ borderRight: "solid" }}>
-              <h1>Please enter these details for price estimation</h1>
+              <h1>Please enter these details for price estimation.</h1>
             </div>
             <div
               className="col-sm-1 "

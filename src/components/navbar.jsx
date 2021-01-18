@@ -38,22 +38,22 @@ const Navbar = () => {
                 <NavLink className="nav-link" to="/contact">
                   Contact Us
                 </NavLink>
-                <NavLink
-                  className="nav-link"
+                <Link
+                  className="btn btn-outline-success"
                   to="/login"
                   style={{
-                    paddingLeft: "700px",
+                    marginLeft: "700px",
                   }}
                 >
                   Login
-                </NavLink>
-                <NavLink
-                  className="nav-link"
+                </Link>
+                <Link
+                  className="btn btn-outline-primary"
                   to="/signup"
-                  style={{ paddingLeft: "10px" }}
+                  style={{ marginLeft: "10px" }}
                 >
                   Register
-                </NavLink>
+                </Link>
               </div>
             </div>
           </nav>
