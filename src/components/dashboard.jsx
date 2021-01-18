@@ -19,6 +19,7 @@ class DashBoard extends Component {
   }
   render() {
     const { users } = this.state;
+    const count = users.length;
     return (
       <React.Fragment>
         <nav className="navbar">
@@ -48,7 +49,7 @@ class DashBoard extends Component {
                 ></i>
                 <div className="cardd_inner">
                   <p className="text-primary-p">Number of Users</p>
-                  <span className="font-bold text-title">578</span>
+                  <span className="font-bold text-title">{count}</span>
                 </div>
               </div>
 
@@ -68,14 +69,17 @@ class DashBoard extends Component {
               <div className="charts__left">
                 <div className="charts__left__title">
                   <div>
-                    <h1>Daily Reports</h1>
-                    <p>Cupertino, California, USA</p>
+                    <h1>Some Registered Users</h1>
+                    <p>
+                      Defence Road، Off Raiwind Rd, Lda Avenue Phase 1 Lda
+                      Avenue, Lahore, Punjab 54000
+                    </p>
                   </div>
                   <i className="fa fa-usd" aria-hidden="true"></i>
                 </div>
                 <div id="apex1">
                   <table className="table">
-                    <thead style={{ fontSize: "20px" }}>
+                    <thead style={{ fontSize: "17px" }}>
                       <tr>
                         <th></th>
                         <th>Name</th>
@@ -83,11 +87,15 @@ class DashBoard extends Component {
                         <th>Email</th>
                       </tr>
                     </thead>
-                    <tbody style={{ fontSize: "15px" }}>
+                    <tbody style={{ fontSize: "17px" }}>
                       {users.map((user) => (
-                        <tr>
+                        <tr key={user.email}>
                           <td>
-                            <i className="fa fa-user-o" aria-hidden="true"></i>
+                            <i
+                              className="fa fa-user-o"
+                              aria-hidden="true"
+                              style={{ fontSize: "25px" }}
+                            ></i>
                           </td>
                           <td>{user.name}</td>
                           <td>{user.username}</td>
@@ -96,38 +104,6 @@ class DashBoard extends Component {
                       ))}
                     </tbody>
                   </table>
-                </div>
-              </div>
-
-              <div className="charts__right">
-                <div className="charts__right__title">
-                  <div>
-                    <h1>Stats Reports</h1>
-                    <p>Cupertino, California, USA</p>
-                  </div>
-                  <i className="fa fa-usd" aria-hidden="true"></i>
-                </div>
-
-                <div className="charts__right__cardds">
-                  <div className="cardd1">
-                    <h1>Income</h1>
-                    <p>$75,300</p>
-                  </div>
-
-                  <div className="cardd2">
-                    <h1>Sales</h1>
-                    <p>$124,200</p>
-                  </div>
-
-                  <div className="cardd3">
-                    <h1>Users</h1>
-                    <p>3900</p>
-                  </div>
-
-                  <div className="cardd4">
-                    <h1>Orders</h1>
-                    <p>1881</p>
-                  </div>
                 </div>
               </div>
             </div>
