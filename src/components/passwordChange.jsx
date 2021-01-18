@@ -58,7 +58,7 @@ class PasswordChange extends Form {
               )}
             </div>
           </div>
-          <div style={{ marginLeft: "470px" }}>
+          <div style={{ marginLeft: "483px" }}>
             {this.renderButton("Submit")}
           </div>
         </form>

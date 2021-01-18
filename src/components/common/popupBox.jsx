@@ -7,9 +7,9 @@ const PopupBox = ({ onCancel, onDelete, data, label }) => {
       className="popup_box"
       style={{
         position: "fixed",
-        top: "50%",
+        top: "40%",
         left: "50%",
-        transform: "translate(-30%, -50%)",
+        transform: "translate(-40%, -50%)",
         borderRadius: "5px",
         background: "white",
         textAlign: "center",

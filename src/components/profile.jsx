@@ -23,7 +23,7 @@ const Profile = (props) => {
               style={{
                 paddingTop: "10px",
                 paddingRight: "70px",
-                fontSize: "25px",
+                fontSize: "23px",
                 justifyContent: "center",
                 textAlign: "center",
               }}
@@ -33,28 +33,28 @@ const Profile = (props) => {
           </div>
           <div className="col-sm-8">
             <table className="table">
-              <tbody>
+              <tbody style={{ fontSize: "20px" }}>
                 <tr>
                   <td>
-                    <h3>Name:</h3>
+                    <h3 style={{ fontSize: "23px" }}>Name:</h3>
                     <p>Usman Afzal</p>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <h3>Username:</h3>
+                    <h3 style={{ fontSize: "23px" }}>Username:</h3>
                     <p>itschowdhry</p>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <h3>Email:</h3>
+                    <h3 style={{ fontSize: "23px" }}>Email:</h3>
                     <p>usman_9@outlook.com</p>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <h3>User Type:</h3>
+                    <h3 style={{ fontSize: "23px" }}>User Type:</h3>
                     <p>Admin</p>
                   </td>
                 </tr>
@@ -66,7 +66,7 @@ const Profile = (props) => {
 
       <button
         className="btn btn-success"
-        style={{ marginBottom: "50px", marginLeft: "290px" }}
+        style={{ marginBottom: "50px", marginLeft: "300px" }}
         onClick={() => props.history.push("/passwordChange")}
       >
         Change Password
