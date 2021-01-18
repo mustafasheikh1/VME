@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import image from "../images/imageicon.png";
+
 class UserData extends Component {
   state = {
     imageIcon: image,
