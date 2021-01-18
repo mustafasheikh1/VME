@@ -27,7 +27,7 @@ class Login extends Form {
   render() {
     return (
       <div className="container" style={{ paddingTop: "40px" }}>
-        <h1>
+        <h1 style={{ paddingLeft: "80px" }}>
           <strong>Login</strong>
         </h1>
 

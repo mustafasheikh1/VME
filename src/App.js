@@ -20,10 +20,10 @@ import SideBar from "./components/sideBar";
 import UserForm from "./components/userForm";
 import Ads from "./components/ads";
 import DisplayAd from "./components/common/displayAd";
-import "react-toastify/dist/ReactToastify.css";
-import "./App.css";
 import PopupBox from "./components/common/popupBox";
 import PasswordChange from "./components/passwordChange";
+import "react-toastify/dist/ReactToastify.css";
+import "./App.css";
 
 class App extends Component {
   state = {
@@ -52,7 +52,10 @@ class App extends Component {
                   <UserData {...props} user={this.state.user} />
                 )}
               />
-              <Route path="/ads" component={Ads} />
+              <Route
+                path="/ads"
+                render={(props) => <Ads {...props} admin={this.state.admin} />}
+              />
               <Route path="/displayAd" component={DisplayAd} />
               <Route path="/passwordChange" component={PasswordChange} />
               <Route path="/not-found" component={NotFound} />
@@ -73,7 +76,12 @@ class App extends Component {
                 <Route path="/users" component={Users} />
                 <Route path="/settings" component={Settings} />
                 <Route path="/profile" component={Profile} />
-                <Route path="/ads" component={Ads} />
+                <Route
+                  path="/ads"
+                  render={(props) => (
+                    <Ads {...props} admin={this.state.admin} />
+                  )}
+                />
                 <Route path="/displayAd" component={DisplayAd} />
                 <Route path="/popup" component={PopupBox} />
                 <Route path="/passwordChange" component={PasswordChange} />

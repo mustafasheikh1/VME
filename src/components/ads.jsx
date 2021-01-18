@@ -7,6 +7,7 @@ import car from "../images/car.jpg";
 import car2 from "../images/car2.jpg";
 import car3 from "../images/lambo.jpg";
 import car4 from "../images/new car.jpg";
+
 class Ads extends Component {
   state = {
     ads: [],
@@ -146,6 +147,8 @@ class Ads extends Component {
     const { ads } = this.getPagedData();
     const { length: count } = this.state.ads;
     const { pageSize, currentPage, editAble } = this.state;
+    const { admin } = this.props;
+    console.log(admin);
     const totalPages = Math.ceil(count / pageSize);
     if (count === 0) return <p>There are no ads in database</p>;
     return (
@@ -179,12 +182,12 @@ class Ads extends Component {
               </strong>
             </div>
           </div>
-          {!editAble && (
+          {admin && !editAble && (
             <button className="btn btn-danger" onClick={this.handleEdit}>
               <i className="fa fa-pencil-square-o" aria-hidden="true"></i> Edit
             </button>
           )}
-          {editAble && (
+          {admin && editAble && (
             <button className="btn btn-success" onClick={this.handleEdit}>
               <i className="fa fa-check" aria-hidden="true"></i> Done
             </button>
