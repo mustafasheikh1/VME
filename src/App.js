@@ -27,7 +27,7 @@ import "./App.css";
 
 class App extends Component {
   state = {
-    admin: true,
+    admin: false,
     user: true,
   };
   render() {
