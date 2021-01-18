@@ -42,6 +42,11 @@ class Results extends Component {
       price,
       licencePlate,
     } = this.state.car;
+    try {
+      const sideIcon = this.props.location.state.img;
+    } catch (error) {
+      window.location = "/not-found";
+    }
     return (
       <React.Fragment>
         <h1 style={{ paddingLeft: "90px" }}>

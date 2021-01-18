@@ -32,16 +32,16 @@ class Login extends Form {
         </h1>
 
         <div className="row">
-          <div className="col-sm-5">
+          <div className="col-sm-6">
             <h2
               style={{
-                paddingTop: "70px",
+                paddingTop: "90px",
                 float: "right",
                 paddingRight: "20px",
               }}
             >
               <strong>
-                Please enter your credentials to login to your account.
+                Please enter your credentials <br /> to login to your account.
               </strong>
             </h2>
           </div>

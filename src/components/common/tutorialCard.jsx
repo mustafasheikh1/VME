@@ -2,23 +2,22 @@ import React from "react";
 
 const TutorialCard = ({ Image, Label, Detail }) => {
   return (
-    <div className="card text-center">
+    <div
+      className="card text-center"
+      style={{ width: "15rem", minHeight: "16rem", maxHeight: "16rem" }}
+    >
       <img
         src={Image}
         alt=""
         style={{
           height: "7rem",
           width: "7rem",
-          marginLeft: "50px",
+          marginLeft: "65px",
         }}
       />
       <div className="card-body" style={{ width: "15rem" }}>
-        <h5 style={{ paddingLeft: "20px" }} className="card-title">
-          {Label}
-        </h5>
-        <p className="card-text " style={{ paddingLeft: "20px" }}>
-          {Detail}
-        </p>
+        <h5 className="card-title">{Label}</h5>
+        <p className="card-text ">{Detail}</p>
       </div>
     </div>
   );
