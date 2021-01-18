@@ -11,7 +11,7 @@ class DashBoard extends Component {
             <i class="fa fa-bars" aria-hidden="true"></i>
           </div>
           <div class="navbar__left">
-            <a href="#">Dashboard</a>
+            <h4>Dashboard</h4>
           </div>
         </nav>
 
@@ -32,16 +32,16 @@ class DashBoard extends Component {
                   aria-hidden="true"
                 ></i>
                 <div class="cardd_inner">
-                  <p class="text-primary-p">Number of users</p>
+                  <p class="text-primary-p">Number of Users</p>
                   <span class="font-bold text-title">578</span>
                 </div>
               </div>
 
               <div class="cardd">
-                <i class="fa fa-car fa-2x text-red" aria-hidden="true"></i>
+                <i class="fa fa-car fa-2x text-green" aria-hidden="true"></i>
                 <div class="cardd_inner">
-                  <p class="text-primary-p">Number of cars</p>
-                  <span class="font-bold text-title">2467</span>
+                  <p class="text-primary-p">Number of Cars</p>
+                  <span class="font-bold text-title">645</span>
                 </div>
               </div>
             </div>
