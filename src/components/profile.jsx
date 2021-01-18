@@ -4,7 +4,7 @@ import userIcon from "../images/userIcon.png";
 const Profile = (props) => {
   return (
     <React.Fragment>
-      <h1>
+      <h1 style={{ paddingLeft: "30px" }}>
         <strong>Profile </strong>
       </h1>
 
