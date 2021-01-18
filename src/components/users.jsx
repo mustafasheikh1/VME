@@ -7,8 +7,8 @@ import Pagination from "./common/pagination";
 import UsersTable from "./usersTable";
 import addUserIcon from "../images/adduser.png";
 import PopupBox from "./common/popupBox";
-import _ from "lodash";
 import SearchBox from "./common/searchBox";
+import _ from "lodash";
 
 class Users extends Component {
   state = {

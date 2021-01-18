@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { paginate } from "../utils/paginate";
 import Pagination from "./common/pagination";
 import AdCard from "./common/adCard";
+import SearchBox from "./common/searchBox";
 import PopupBox from "./common/popupBox";
 import car from "../images/car.jpg";
 import car2 from "../images/car2.jpg";
@@ -16,6 +17,8 @@ class Ads extends Component {
     editAble: false,
     display: false,
     data: "",
+    originalCount: "",
+    searchQuery: "",
   };
 
   componentDidMount() {
@@ -98,7 +101,8 @@ class Ads extends Component {
           "Some quick example text to build on the card title and make up the bulk of the card's content.",
       },
     ];
-    this.setState({ ads });
+    const originalCount = ads.length;
+    this.setState({ ads, originalCount });
   }
 
   constructor(props) {
@@ -108,10 +112,14 @@ class Ads extends Component {
   }
 
   getPagedData = () => {
-    const { ads: allAds, pageSize, currentPage } = this.state;
-
-    const ads = paginate(allAds, currentPage, pageSize);
-    return { ads };
+    const { ads: allAds, pageSize, currentPage, searchQuery } = this.state;
+    let filtered = allAds;
+    if (searchQuery)
+      filtered = allAds.filter((a) =>
+        a.name.toLowerCase().startsWith(searchQuery.toLowerCase())
+      );
+    const ads = paginate(filtered, currentPage, pageSize);
+    return { ads, totalCount: filtered.length };
   };
 
   executeScroll = () => this.myRef.current.scrollIntoView();
@@ -143,14 +151,19 @@ class Ads extends Component {
     this.setState({ display });
   };
 
+  handleSearch = (query) => {
+    this.setState({ searchQuery: query, currentPage: 1 });
+  };
+
   render() {
-    const { ads } = this.getPagedData();
-    const { length: count } = this.state.ads;
-    const { pageSize, currentPage, editAble } = this.state;
+    const { ads, totalCount: count } = this.getPagedData();
+    const { length: originalCount } = this.state.ads;
+    const { pageSize, currentPage, editAble, searchQuery } = this.state;
     const { admin } = this.props;
     console.log(admin);
     const totalPages = Math.ceil(count / pageSize);
-    if (count === 0) return <p>There are no ads in database</p>;
+    if (originalCount === 0) return <p>There are no ads in database</p>;
+
     return (
       <React.Fragment>
         {this.state.display && (
@@ -182,16 +195,39 @@ class Ads extends Component {
               </strong>
             </div>
           </div>
-          {admin && !editAble && (
-            <button className="btn btn-danger" onClick={this.handleEdit}>
-              <i className="fa fa-pencil-square-o" aria-hidden="true"></i> Edit
-            </button>
-          )}
-          {admin && editAble && (
-            <button className="btn btn-success" onClick={this.handleEdit}>
-              <i className="fa fa-check" aria-hidden="true"></i> Done
-            </button>
-          )}
+          <div className="row">
+            {admin && !editAble && (
+              <button
+                className="btn btn-danger"
+                onClick={this.handleEdit}
+                style={{
+                  marginTop: "15px",
+                  marginBottom: "15px",
+                  marginLeft: "20px",
+                }}
+              >
+                <i className="fa fa-pencil-square-o" aria-hidden="true"></i>{" "}
+                Edit
+              </button>
+            )}
+            {admin && editAble && (
+              <button
+                className="btn btn-success"
+                onClick={this.handleEdit}
+                style={{
+                  marginTop: "15px",
+                  marginBottom: "15px",
+                  marginLeft: "20px",
+                }}
+              >
+                <i className="fa fa-check" aria-hidden="true"></i> Done
+              </button>
+            )}
+            <div className="col-sm-6">
+              <SearchBox value={searchQuery} onChange={this.handleSearch} />
+            </div>
+          </div>
+
           <div className="row">
             {ads.map((ad) => (
               <div
