@@ -22,7 +22,7 @@ class DashBoard extends Component {
     const count = users.length;
     return (
       <React.Fragment>
-        <nav className="navbar">
+        <nav className="navbarr">
           <div className="nav_icon">
             <i className="fa fa-bars" aria-hidden="true"></i>
           </div>
