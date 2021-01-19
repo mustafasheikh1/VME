@@ -14,6 +14,7 @@ class ResultForm extends Form {
     },
     sideIcon: image,
     errors: {},
+    carImage: "",
   };
 
   schema = {
@@ -37,16 +38,14 @@ class ResultForm extends Form {
 
   doSubmit = () => {
     //call the server
-    this.props.history.push("/priceData");
+    const sideIcon = this.props.location.state.img;
+    this.setState({ carImage: sideIcon });
+    this.props.history.push("/priceData", { sideIcon });
   };
 
   render() {
     const { sideIcon } = this.state;
-    try {
-      const sideIcon = this.props.location.state.img;
-    } catch (error) {
-      window.location = "/not-found";
-    }
+
     return (
       <React.Fragment>
         <p style={{ paddingTop: "20px", paddingLeft: "50px" }}>

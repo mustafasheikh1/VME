@@ -1,15 +1,9 @@
 import React, { Component } from "react";
 import makeIcon from "../images/makeIcon2.png";
 import modelIcon from "../images/modelIcon2.png";
-import registrationCityIcon from "../images/registrationCityIcon.png";
-import fuelIcon from "../images/fuelIcon.png";
-import mileageIcon from "../images/mileageIcon2.png";
-import engineIcon from "../images/engineIcon.jpg";
-import transmissionIcon from "../images/transmissionIcon.png";
 import priceIcon from "../images/priceIcon.png";
 import licencePlateIcon from "../images/licenceplateIcon.png";
-import yearIcon from "../images/yearIcon2.png";
-
+import colorIcon from "../images/colorIcon.png";
 class Results extends Component {
   state = {
     car: {},
@@ -18,174 +12,86 @@ class Results extends Component {
     const car = {
       make: "Honda",
       model: "Accord",
-      registrationCity: "Islamabad",
-      fuel: "Petrol",
-      mileage: "200,000 km",
-      engine: "1600 cc",
-      tranmission: "Manual",
       price: "2200000/- Rs",
       licencePlate: "LZX-9171",
-      year: "2015",
+      color: "white",
     };
     this.setState({ car });
   }
   render() {
-    const {
-      make,
-      model,
-      year,
-      registrationCity,
-      fuel,
-      mileage,
-      engine,
-      tranmission,
-      price,
-      licencePlate,
-    } = this.state.car;
-    try {
-      const sideIcon = this.props.location.state.img;
-    } catch (error) {
-      window.location = "/not-found";
-    }
+    const { make, model, price, licencePlate, color } = this.state.car;
+
+    const sideIcon = this.props.location.state.sideIcon;
+
     return (
       <React.Fragment>
-        <h1 style={{ paddingLeft: "90px" }}>
-          <strong>Results</strong>
-        </h1>
-        <div className="row">
-          <div
-            className="col-sm-1"
-            style={{ paddingLeft: "100px", paddingTop: "30px" }}
-          >
-            <img style={{ width: "120px" }} src={makeIcon} alt="" />
-            <h4 style={{ marginLeft: "30px" }}>Brand</h4>
-          </div>
-          <div className="col-sm-1" style={{ paddingLeft: "130px" }}>
-            <h4 style={{ paddingTop: "65px" }}>
-              <strong>{make}</strong>
-            </h4>
-          </div>
-          <div
-            className="col-sm-1"
-            style={{ paddingLeft: "275px", paddingTop: "10px" }}
-          >
-            <img style={{ width: "150px" }} src={modelIcon} alt="" />
-            <h4 style={{ marginLeft: "45px" }}>Model</h4>
-          </div>
-          <div className="col-sm-1" style={{ paddingLeft: "150px" }}>
-            <h4 style={{ paddingTop: "65px" }}>
-              <strong>{model}</strong>
-            </h4>
-          </div>
-          <div
-            className="col-sm-1"
-            style={{ paddingLeft: "250px", paddingTop: "10px" }}
-          >
-            <img style={{ width: "150px" }} src={yearIcon} alt="" />
-            <h4 style={{ marginLeft: "45px" }}>Year</h4>
-          </div>
-          <div className="col-sm-1" style={{ paddingLeft: "150px" }}>
-            <h4 style={{ paddingTop: "65px" }}>
-              <strong>{year}</strong>
-            </h4>
+        <div
+          className="col-sm-10"
+          style={{ paddingTop: "20px", paddingLeft: "90px" }}
+        >
+          <div className="card mb-3">
+            <img className="card-img-top" src={sideIcon} alt="" />
           </div>
         </div>
 
-        <div className="row" style={{ paddingTop: "40px" }}>
-          <div
-            className="col-sm-1"
-            style={{ paddingLeft: "80px", paddingTop: "10px" }}
-          >
-            <img style={{ width: "150px" }} src={fuelIcon} alt="" />
-            <h4 style={{ marginLeft: "55px" }}>Fuel</h4>
+        <div className="row" style={{ paddingLeft: "90px" }}>
+          <div className="col-sm-1">
+            <img style={{ width: "100px" }} src={makeIcon} alt="" />
+            <h4 style={{ marginLeft: "20px" }}>Brand</h4>
           </div>
-          <div className="col-sm-1" style={{ paddingLeft: "130px" }}>
-            <h4 style={{ paddingTop: "65px" }}>
-              <strong>{fuel}</strong>
+          <div
+            className="col-sm-2"
+            style={{ paddingLeft: "50px", paddingTop: "30px" }}
+          >
+            <h4>
+              <b>{make}</b>
             </h4>
           </div>
-          <div
-            className="col-sm-1"
-            style={{ paddingLeft: "275px", paddingTop: "10px" }}
-          >
-            <img style={{ width: "150px" }} src={mileageIcon} alt="" />
-            <h4 style={{ marginLeft: "45px" }}>Mileage</h4>
+          <div className="col-sm-2" style={{ paddingLeft: "90px" }}>
+            <img style={{ width: "100px" }} src={modelIcon} alt="" />
+            <h4 style={{ marginLeft: "30px" }}>Model</h4>
           </div>
-          <div className="col-sm-3" style={{ paddingLeft: "150px" }}>
-            <h4 style={{ paddingTop: "65px" }}>
-              <strong>{mileage}</strong>
+          <div
+            className="col-sm-2"
+            style={{ paddingLeft: "30px", paddingTop: "30px" }}
+          >
+            <h4>
+              <b>{model}</b>
             </h4>
           </div>
-          <div
-            className="col-sm-1"
-            style={{
-              paddingLeft: "80px",
-              paddingTop: "10px",
-            }}
-          >
-            <img style={{ width: "150px" }} src={engineIcon} alt="" />
-            <h4 style={{ marginLeft: "45px" }}>Engine</h4>
-          </div>
-          <div className="col-sm-3" style={{ paddingLeft: "110px" }}>
-            <h4 style={{ paddingTop: "65px" }}>
-              <strong>{engine}</strong>
-            </h4>
-          </div>
-        </div>
-
-        <div className="row" style={{ paddingTop: "40px" }}>
-          <div
-            className="col-sm-1"
-            style={{ paddingLeft: "100px", paddingTop: "10px" }}
-          >
-            <img style={{ width: "120px" }} src={registrationCityIcon} alt="" />
-            <h4 style={{ marginLeft: "15px" }}>Registration City</h4>
-          </div>
-          <div className="col-sm-1" style={{ paddingLeft: "135px" }}>
-            <h4 style={{ paddingTop: "65px" }}>
-              <strong>{registrationCity}</strong>
-            </h4>
-          </div>
-          <div
-            className="col-sm-1"
-            style={{ paddingLeft: "290px", paddingTop: "10px" }}
-          >
-            <img style={{ width: "100px" }} src={transmissionIcon} alt="" />
-            <h4>Transmission</h4>
-          </div>
-          <div className="col-sm-3" style={{ paddingLeft: "130px" }}>
-            <h4 style={{ paddingTop: "65px" }}>
-              <strong>{tranmission}</strong>
-            </h4>
-          </div>
-          <div
-            className="col-sm-1"
-            style={{ paddingLeft: "80px", paddingTop: "10px" }}
-          >
-            <img style={{ width: "150px" }} src={licencePlateIcon} alt="" />
-            <h4 style={{ marginLeft: "45px" }}>Licence Plate</h4>
-          </div>
-          <div className="col-sm-3" style={{ paddingLeft: "130px" }}>
-            <h4 style={{ paddingTop: "65px" }}>
-              <strong>{licencePlate}</strong>
-            </h4>
-          </div>
-        </div>
-        <div className="row">
-          <div
-            className="col-sm-1 offset-sm-4"
-            style={{
-              paddingLeft: "100px",
-              paddingTop: "20px",
-              paddingBottom: "70px",
-            }}
-          >
+          <div className="col-sm-1">
             <img style={{ width: "100px" }} src={priceIcon} alt="" />
-            <h4 style={{ marginLeft: "45px" }}>Price</h4>
+            <h4 style={{ marginLeft: "20px" }}>Price</h4>
           </div>
-          <div className="col-sm-3" style={{ paddingLeft: "120px" }}>
-            <h4 style={{ paddingTop: "65px" }}>
-              <strong>{price}</strong>
+          <div
+            className="col-sm-2"
+            style={{ paddingLeft: "30px", paddingTop: "30px" }}
+          >
+            <h4>
+              <b>{price}</b>
+            </h4>
+          </div>
+        </div>
+        <div className="row" style={{ paddingLeft: "100px" }}>
+          <div className="col-sm-2" style={{ paddingLeft: "70px" }}>
+            <img style={{ width: "100px" }} src={colorIcon} alt="" />
+            <h4 style={{ marginLeft: "20px" }}>Color</h4>
+          </div>
+          <div
+            className="col-sm-2"
+            style={{ paddingLeft: "30px", paddingTop: "30px" }}
+          >
+            <h4>
+              <b>{color}</b>
+            </h4>
+          </div>
+          <div className="col-sm-3" style={{ paddingLeft: "100px" }}>
+            <img style={{ width: "100px" }} src={licencePlateIcon} alt="" />
+            <h4>Licence Plate</h4>
+          </div>
+          <div className="col-sm-3" style={{ paddingTop: "30px" }}>
+            <h4>
+              <b>{licencePlate}</b>
             </h4>
           </div>
         </div>

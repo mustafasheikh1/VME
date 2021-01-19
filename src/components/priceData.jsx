@@ -22,15 +22,16 @@ class PriceData extends Form {
 
   doSubmit = () => {
     //call the server
-    this.props.history.push("/results");
+    const sideIcon = this.props.location.state.sideIcon;
+    this.props.history.push("/results", { sideIcon });
   };
 
   render() {
-    try {
-      const sideIcon = this.props.location.state.img;
-    } catch (error) {
-      window.location = "/not-found";
-    }
+    // try {
+    //   const sideIcon = this.props.location.state.img;
+    // } catch (error) {
+    //   window.location = "/not-found";
+    // }
     return (
       <React.Fragment>
         <form onSubmit={this.handleSubmit} style={{ paddingTop: "150px" }}>

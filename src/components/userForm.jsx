@@ -9,7 +9,6 @@ class UserForm extends Form {
       name: "",
       username: "",
       email: "",
-      adminTypeId: "",
     },
     editable: false,
     errors: {},
@@ -23,7 +22,6 @@ class UserForm extends Form {
     email: Joi.string().email().required().label("Email"),
     confirmPassword: Joi.string().label("Confirm Password"),
     password: Joi.string().min(6).label("Password"),
-    adminTypeId: Joi.string().required().label("Admin Type"),
   };
 
   async populateUser() {
@@ -45,17 +43,7 @@ class UserForm extends Form {
     }
   }
 
-  getAdminTypes() {
-    const adminTypes = [
-      { id: "1", name: "Admin" },
-      { id: "2", name: "non-Admin" },
-    ];
-    return adminTypes;
-  }
-
   async componentDidMount() {
-    const adminTypes = this.getAdminTypes();
-    this.setState({ adminTypes });
     if (this.props.match.params.id === "new") {
       const editable = true;
       this.setState({ editable });
@@ -68,7 +56,6 @@ class UserForm extends Form {
       name: user.name,
       username: user.username,
       email: user.email,
-      userTypeId: user.userTypeId,
     };
   }
 
@@ -185,11 +172,7 @@ class UserForm extends Form {
                       )}
                     </React.Fragment>
                   )}
-                  {this.renderSelect(
-                    "adminTypeId",
-                    "User Type",
-                    this.state.adminTypes
-                  )}
+
                   {this.renderButton("Save")}
                 </form>
               </div>
