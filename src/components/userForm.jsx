@@ -9,9 +9,11 @@ class UserForm extends Form {
       name: "",
       username: "",
       email: "",
+      adminTypeId: "",
     },
     editable: false,
     errors: {},
+    adminTypes: [],
   };
 
   schema = {
@@ -21,6 +23,7 @@ class UserForm extends Form {
     email: Joi.string().email().required().label("Email"),
     confirmPassword: Joi.string().label("Confirm Password"),
     password: Joi.string().min(6).label("Password"),
+    adminTypeId: Joi.string().required().label("Admin Type"),
   };
 
   async populateUser() {
@@ -42,7 +45,17 @@ class UserForm extends Form {
     }
   }
 
+  getAdminTypes() {
+    const adminTypes = [
+      { id: "1", name: "Admin" },
+      { id: "2", name: "non-Admin" },
+    ];
+    return adminTypes;
+  }
+
   async componentDidMount() {
+    const adminTypes = this.getAdminTypes();
+    this.setState({ adminTypes });
     if (this.props.match.params.id === "new") {
       const editable = true;
       this.setState({ editable });
@@ -55,6 +68,7 @@ class UserForm extends Form {
       name: user.name,
       username: user.username,
       email: user.email,
+      userTypeId: user.userTypeId,
     };
   }
 
@@ -85,7 +99,7 @@ class UserForm extends Form {
     return (
       <React.Fragment>
         <div className="container">
-          <h1 style={{ paddingTop: "40px" }}>
+          <h1 style={{ paddingTop: "40px", paddingLeft: "50px" }}>
             <strong>User Form</strong>
           </h1>
           {this.state.error && (
@@ -151,7 +165,11 @@ class UserForm extends Form {
             {editable && (
               <div
                 className="col-sm-6"
-                style={{ borderLeft: "solid", paddingLeft: "50px" }}
+                style={{
+                  borderLeft: "solid",
+                  paddingLeft: "50px",
+                  marginBottom: "50px",
+                }}
               >
                 <form onSubmit={this.handleSubmit}>
                   {this.renderInput("name", "Name")}
@@ -166,6 +184,11 @@ class UserForm extends Form {
                         "password"
                       )}
                     </React.Fragment>
+                  )}
+                  {this.renderSelect(
+                    "adminTypeId",
+                    "User Type",
+                    this.state.adminTypes
                   )}
                   {this.renderButton("Save")}
                 </form>
