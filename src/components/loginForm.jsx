@@ -1,30 +1,44 @@
 import React from "react";
 import Joi from "joi-browser";
 import Form from "./common/form";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import API from '../services/api';
+
+const api = new API();
 
 class Login extends Form {
   state = {
-    data: { email: "", password: "" },
+    data: { username: "", password: "" },
     errors: {},
   };
 
   schema = {
-    email: Joi.string().email().required().label("E-mail"),
+    username: Joi.string().required().label("username"),
     password: Joi.string().required().label("Password"),
   };
 
   componentDidMount() {
-    const data = { email: "", password: "" };
+    const data = { username: "", password: "" };
     this.setState({ data });
   }
 
-  doSubmit = () => {
+  doSubmit = async () => {
     //call the server
-    this.props.history.push("/");
+    const res = await api.login(this.state.data.username, this.state.data.password)
+    if(res.status === 200 && res.data?.token){
+      localStorage.setItem('current_usr', res.data.token)
+      this.props.history.push("/");
+    }
   };
 
   render() {
+
+    if(localStorage.getItem('current_usr')){
+      return (
+        <Redirect to="/dashboard"/>
+      )
+    }
+
     return (
       <div className="container" style={{ paddingTop: "40px" }}>
         <h1 style={{ paddingLeft: "80px" }}>
@@ -56,7 +70,7 @@ class Login extends Form {
             }}
           >
             <form onSubmit={this.handleSubmit}>
-              {this.renderInput("email", "E-mail")}
+              {this.renderInput("username", "User name")}
               {this.renderInput("password", "Password", "password")}
               {this.renderButton("Login")}
               <Link to="/signup" style={{ paddingLeft: "200px" }}>

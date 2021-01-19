@@ -35,12 +35,24 @@ class SideBar extends Component {
         icon: <i className="fa fa-user" aria-hidden="true"></i>,
         path: "/profile",
       },
+      {
+        name: "Logout",
+        icon: <i className="fa fa-user" aria-hidden="true"></i>,
+        action: () => {
+          localStorage.clear()
+        },
+        path: "/login",
+      }
     ];
 
     this.setState({ items });
   }
 
   handleItemSelect(item) {
+    if(item.action){
+      item?.action();
+    }
+
     this.setState({ selectedItem: item });
   }
 

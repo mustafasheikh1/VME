@@ -8,6 +8,10 @@ import car from "../images/car.jpg";
 import car2 from "../images/car2.jpg";
 import car3 from "../images/lambo.jpg";
 import car4 from "../images/new car.jpg";
+import API from '../services/api';
+
+const api = new API();
+
 
 class Ads extends Component {
   state = {
@@ -22,6 +26,8 @@ class Ads extends Component {
   };
 
   componentDidMount() {
+    api.getAds();
+
     const ads = [
       {
         Id: 1,

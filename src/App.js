@@ -73,6 +73,7 @@ class App extends Component {
               <Switch>
                 <Route path="/users/:id" component={UserForm} />
                 <Route path="/dashboard" component={DashBoard} />
+                <Route path='/login' component={Login} /> 
                 <Route path="/users" component={Users} />
                 <Route path="/settings" component={Settings} />
                 <Route path="/profile" component={Profile} />

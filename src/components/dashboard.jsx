@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import { getUsers } from "../services/userService";
 import hello from "../images/hello.svg";
 import "../css/dashboard.css";
+import { Redirect } from "react-router-dom";
+import API from '../services/api';
+
+const api = new API();
 
 class DashBoard extends Component {
   state = {
@@ -16,8 +20,15 @@ class DashBoard extends Component {
     users[2] = data[2];
     users[3] = data[3];
     this.setState({ users });
+    api.getProfile()
   }
   render() {
+    if(!localStorage.getItem('current_usr')){
+      return (
+        <Redirect to="/login"/>
+      )
+    }
+
     const { users } = this.state;
     const count = users.length;
     return (
