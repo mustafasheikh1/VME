@@ -9,6 +9,10 @@ import addUserIcon from "../images/adduser.png";
 import PopupBox from "./common/popupBox";
 import SearchBox from "./common/searchBox";
 import _ from "lodash";
+import API from '../services/api';
+
+const api = new API();
+
 
 class Users extends Component {
   state = {
@@ -22,9 +26,9 @@ class Users extends Component {
   };
 
   async componentDidMount() {
-    const { data: users } = await getUsers();
+    const users = await api.getAllUser();
     const originalCount = users.length;
-    this.setState({ users, originalCount });
+    this.setState({ users, originalCount }); 
   }
 
   handleDelete = async (user) => {
@@ -62,7 +66,7 @@ class Users extends Component {
     let filtered = allusers;
     if (searchQuery)
       filtered = allusers.filter((u) =>
-        u.name.toLowerCase().startsWith(searchQuery.toLowerCase())
+        u.firstname?.toLowerCase().startsWith(searchQuery?.toLowerCase())
       );
 
     const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);

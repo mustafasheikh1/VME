@@ -26,6 +26,14 @@ class API {
         }
     }
 
+    async getAllUser(){
+        let users = await axios.get(`${API_ROUTES.USERS}`)
+        if(users.status === 200 && users.data ){
+            return users.data
+        }
+        return null
+    }
+
         
 }
 

@@ -10,16 +10,19 @@ class UsersTable extends Component {
   componentDidMount() {
     const columns = [
       {
-        path: "id",
+        path: "user.user_profile",
         label: "Id",
       },
       {
         path: "name",
         label: "Name",
-        content: (user) => <Link to={`/users/${user.id}`}>{user.name}</Link>,
+        content: (user) => {
+          console.log(user)
+          return <p>{user?.firstname} {user?.lastname}</p>
+        },
       },
-      { path: "username", label: "Username" },
-      { path: "email", label: "email" },
+      { path: "user.username", label: "Username" },
+      { path: "user.email", label: "email" },
       {
         key: "delete",
         content: (user) => (
